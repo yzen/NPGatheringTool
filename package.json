@@ -1,0 +1,35 @@
+{
+    "name": "NPGatheringTool",
+    "description": "A tool used to generate profiles for the first evaluation phase.",
+    "version": "0.1.0",
+    "author": "GPII",
+    "bugs": "http://wiki.gpii.net/index.php/Main_Page",
+    "homepage": "http://gpii.net/",
+    "dependencies": {
+        "universal": "git://github.com/yzen/universal.git#7b7167f1c99bb5749803a394b6fabb9084204564"
+    },
+    "devDependencies": {
+        "jqUnit": "git://github.com/fluid-project/node-jqUnit.git#e9bf72445bd343a4f3aabe3ba96a1087d3498612"
+    },
+    "licenses": [
+        {
+            "type": "BSD-3-Clause",
+            "url": "http://www.opensource.org/licenses/BSD-3-Clause"
+        }
+    ],
+    "keywords": [
+        "gpii",
+        "accessibility",
+        "settings",
+        "fluid",
+        "IoC",
+        "Inversion of Control",
+        "configuration",
+        "evented"
+    ],
+    "repository": "git://github.com/yzen/NPGatheringTool.git",
+    "main": "./NPGatheringTool.js",
+    "engines": {
+        "node": ">=0.1.9"
+    }
+}
