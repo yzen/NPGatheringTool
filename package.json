@@ -6,7 +6,7 @@
     "bugs": "http://wiki.gpii.net/index.php/Main_Page",
     "homepage": "http://gpii.net/",
     "dependencies": {
-        "universal": "git://github.com/yzen/universal.git#c5abfbcb26bb7fdd6f609d0d14d41404bf486278"
+        "universal": "git://github.com/yzen/universal.git#7200944035ae38af264c5ebeed04b5047689a488"
     },
     "licenses": [
         {
@@ -25,7 +25,7 @@
         "evented"
     ],
     "repository": "git://github.com/yzen/NPGatheringTool.git",
-    "main": "./NPGatheringTool.js",
+    "main": "./lib/NPGatheringTool.js",
     "engines": {
         "node": ">=0.1.9"
     }
