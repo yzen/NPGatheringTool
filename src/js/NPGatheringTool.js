@@ -19,18 +19,38 @@ https://github.com/gpii/universal/LICENSE.txt
     fluid.defaults("gpii.NPGatheringTool", {
         gradeNames: ["autoInit", "fluid.rendererComponent"],
         selectors: {
-            linuxGroupLabel: ".gpii-NPGatheringTool-linuxGroupLabel"
+            linuxGroupLabel: ".gpii-NPGatheringTool-linuxGroupLabel",
+            orcaRate: ".gpii-NPGatheringTool-orca-rate",
+            orcaRateLabel: ".gpii-NPGatheringTool-orca-rate-label"
+        },
+        model: {
+            "http://registry.gpii.org/applications/org.gnome.orca": [{
+                value: {
+                    rate: null
+                }
+            }]
         },
         strings: {
-            linuxGroupLabel: "Linux"
+            linuxGroupLabel: "Linux",
+            orcaRateLabel: "Rate"
         },
         renderOnInit: true,
         protoTree: {
             linuxGroupLabel: {
                 messagekey: "linuxGroupLabel"
-            }
+            },
+            orcaRateLabel: {
+                messagekey: "orcaRateLabel"
+            },
+            orcaRate: "${http://registry\.gpii\.org/applications/org\.gnome\.orca.0.value.rate}"
         }
     });
+
+    gpii.NPGatheringTool.finalInit = function (that) {
+        that.applier.modelChanged.addListener("*", function (model) {
+            console.log(JSON.stringify(model));
+        });
+    };
 
     $(document).ready(function () {
         gpii.NPGatheringTool(".gpii-NPGatheringTool");
