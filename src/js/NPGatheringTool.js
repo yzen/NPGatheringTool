@@ -1,5 +1,5 @@
 /*!
-GPII N/P gathering tool SET handler
+GPII N/P Gathering tool.
 
 Copyright 2013 OCAD University
 
@@ -13,12 +13,5 @@ https://github.com/gpii/universal/LICENSE.txt
 (function () {
 
     "use strict";
-
-    var fluid = require("universal"),
-        gpii = fluid.registerNamespace("gpii");
-
-    gpii.requests.request.handler.NPGatheringToolSet = function (requestProxy, that, preferencesSource) {
-        // TODO
-    };
-
+    
 })();

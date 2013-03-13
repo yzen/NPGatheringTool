@@ -70,5 +70,11 @@
         "demandSpec": {
             "funcName": "gpii.middleware.staticInfusion"
         }
+    }, {
+        "demandingName": "staticSrc",
+        "contextNames": "gpii.app",
+        "demandSpec": {
+            "funcName": "gpii.middleware.staticSrc"
+        }
     }]
 }
