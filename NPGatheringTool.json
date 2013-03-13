@@ -1,0 +1,74 @@
+{
+    "typeName": "NPGatheringTool",
+    "options": {
+        "gradeNames": ["autoInit", "fluid.littleComponent"],
+        "components": {
+            "server": {
+                "type": "gpii.server",
+                "options": {
+                    "logging": true,
+                    "components": {
+                        "NPGatheringTool": {
+                            "type": "gpii.NPGatheringTool"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "demands": [{
+        "demandingName": "gpii.requests.request.handler",
+        "contextNames": "NPGatheringToolGet",
+        "demandSpec": {
+            "funcName": "gpii.NPGatheringTool.handler"
+        }
+    }, {
+        "demandingName": "gpii.requests.request.handler",
+        "contextNames": "NPGatheringToolSet",
+        "demandSpec": {
+            "options": {
+                "invokers": {
+                    "handle": {
+                        "funcName": "gpii.requests.request.handler.NPGatheringToolSet",
+                        "args": ["{requestProxy}", "{request}.req", "{NPGatheringTool}.preferencesSource"]
+                    }
+                }
+            }
+        }
+    }, {
+        "demandingName": "templateSource",
+        "contextNames": "gpii.NPGatheringTool",
+        "demandSpec": {
+            "options": {
+                "components": {
+                    "rawSource": "{rawTemplateSource}"
+                }
+            }
+        }
+    }, {
+        "demandingName": "gpii.urlExpander",
+        "contextNames": "gpii.NPGatheringTool",
+        "demandSpec": {
+            "funcName": "gpii.urlExpander.development"
+        }
+    }, {
+        "demandingName": "rawTemplateSource",
+        "contextNames": "gpii.NPGatheringTool",
+        "demandSpec": {
+            "funcName": "gpii.dataSource.URL"
+        }
+    }, {
+        "demandingName": "gpii.dataSource.modelParser.parse",
+        "contextNames": ["gpii.dataSource.modelParser", "gpii.NPGatheringTool"],
+        "demandSpec": {
+            "funcName": "fluid.identity",
+            "args": "{arguments}.0"
+        }
+    }, {
+        "demandingName": "static",
+        "contextNames": "gpii.app",
+        "demandSpec": {
+            "funcName": "gpii.middleware.static"
+        }
+    }]
+}
