@@ -14,10 +14,28 @@ https://github.com/gpii/universal/LICENSE.txt
 
     "use strict";
 
-    fluid.registerNamespace("gpii");
+    fluid.registerNamespace("gpii.NPGatheringTool");
+
+    gpii.NPGatheringTool.configParser = {
+        parse: fluid.pathUtil.parseEL,
+        compose: fluid.pathUtil.composePath
+    };
+
+    gpii.NPGatheringTool.resolverGetConfig = {
+        parser: gpii.NPGatheringTool.configParser,
+        strategies: [fluid.model.defaultFetchStrategy]
+    };
+
+    gpii.NPGatheringTool.resolverSetConfig = {
+        parser: gpii.NPGatheringTool.configParser,
+        strategies: [fluid.model.defaultFetchStrategy, fluid.model.defaultCreatorStrategy]
+    };
 
     fluid.defaults("gpii.NPGatheringTool", {
         gradeNames: ["autoInit", "fluid.rendererComponent"],
+        mergePolicy: {
+            "changeApplierOptions.resolverSetConfig": "resolverSetConfig"
+        },
         selectors: {
             linuxGroupLabel: ".gpii-NPGatheringTool-linuxGroupLabel",
             orcaRate: ".gpii-NPGatheringTool-orca-rate",
@@ -42,15 +60,13 @@ https://github.com/gpii/universal/LICENSE.txt
             orcaRateLabel: {
                 messagekey: "orcaRateLabel"
             },
-            orcaRate: "${http://registry\.gpii\.org/applications/org\.gnome\.orca.0.value.rate}"
-        }
+            orcaRate: "${http://registry\\.gpii\\.org/applications/org\\.gnome\\.orca.0.value.rate}"
+        },
+        // Both set and get configs are used to resolve elPaths that contain escaped "." characters
+        // and to prevent these paths from being parsed into a nested structure.
+        resolverGetConfig: gpii.NPGatheringTool.resolverGetConfig,
+        resolverSetConfig: gpii.NPGatheringTool.resolverSetConfig
     });
-
-    gpii.NPGatheringTool.finalInit = function (that) {
-        that.applier.modelChanged.addListener("*", function (model) {
-            console.log(JSON.stringify(model));
-        });
-    };
 
     $(document).ready(function () {
         gpii.NPGatheringTool(".gpii-NPGatheringTool");
