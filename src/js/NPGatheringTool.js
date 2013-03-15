@@ -34,6 +34,8 @@ https://github.com/gpii/universal/LICENSE.txt
     fluid.defaults("gpii.NPGatheringTool", {
         gradeNames: ["autoInit", "fluid.rendererComponent"],
         mergePolicy: {
+            // TODO: This should go away once we update to the latest infusion that has a fix
+            // for FLUID-4935.
             "changeApplierOptions.resolverSetConfig": "resolverSetConfig"
         },
         selectors: {
