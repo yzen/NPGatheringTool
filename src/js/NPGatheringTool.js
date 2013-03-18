@@ -40,35 +40,116 @@ https://github.com/gpii/universal/LICENSE.txt
         },
         selectors: {
             linuxGroupLabel: ".gpii-NPGatheringTool-linuxGroupLabel",
+            tokenLabel: ".gpii-NPGatheringTool-token-label",
+            token: ".gpii-NPGatheringTool-token",
             orcaRate: ".gpii-NPGatheringTool-orca-rate",
             orcaRateLabel: ".gpii-NPGatheringTool-orca-rate-label"
         },
         model: {
-            "http://registry.gpii.org/applications/org.gnome.orca": [{
-                value: {
-                    rate: null
-                }
-            }]
+            token: "",
+            prefs: {
+                "http://registry.gpii.org/applications/org.gnome.orca": [{
+                    value: {
+                        rate: null
+                    }
+                }]
+            }
+        },
+        events: {
+            updatePrefs: null
+        },
+        listeners: {
+            updatePrefs: "{that}.updatePrefs"
+        },
+        invokers: {
+            updatePrefs: {
+                funcName: "gpii.NPGatheringTool.updatePrefs",
+                args: ["{that}.applier", "{arguments}.0", "{that}.refreshView"]
+            }
         },
         strings: {
+            tokenLabel: "Token",
             linuxGroupLabel: "Linux",
             orcaRateLabel: "Rate"
         },
+        components: {
+            tokenReader: {
+                type: "gpii.tokenReader"
+            }
+        },
         renderOnInit: true,
         protoTree: {
+            tokenLabel: {
+                messagekey: "tokenLabel"
+            },
+            token: "${token}",
             linuxGroupLabel: {
                 messagekey: "linuxGroupLabel"
             },
             orcaRateLabel: {
                 messagekey: "orcaRateLabel"
             },
-            orcaRate: "${http://registry\\.gpii\\.org/applications/org\\.gnome\\.orca.0.value.rate}"
+            orcaRate: "${prefs.http://registry\\.gpii\\.org/applications/org\\.gnome\\.orca.0.value.rate}"
         },
         // Both set and get configs are used to resolve elPaths that contain escaped "." characters
         // and to prevent these paths from being parsed into a nested structure.
         resolverGetConfig: gpii.NPGatheringTool.resolverGetConfig,
         resolverSetConfig: gpii.NPGatheringTool.resolverSetConfig
     });
+
+    gpii.NPGatheringTool.updatePrefs = function (applier, model, refreshView) {
+        applier.requestChange("", model);
+        refreshView();
+    };
+
+    fluid.defaults("gpii.tokenReader", {
+        gradeNames: ["autoInit", "fluid.eventedComponent"],
+        token: {
+            expander: {
+                func: "gpii.tokenReader.readToken"
+            }
+        },
+        invokers: {
+            readPrefs: {
+                funcName: "gpii.tokenReader.readPrefs",
+                args: ["{that}.options.token", "{that}.options.prefsUrl", "{that}.events.afterReadPrefs"]
+            }
+        },
+        prefsUrl: "/prefs/%token",
+        events: {
+            afterReadPrefs: "{gpii.NPGatheringTool}.events.updatePrefs"
+        },
+        listeners: {
+            onCreate: "{that}.readPrefs"
+        }
+    });
+
+    gpii.tokenReader.readToken = function () {
+        return location.pathname.match(/\/(.*)/)[1];
+    };
+
+    gpii.tokenReader.readPrefs = function (token, url, afterReadPrefs) {
+        if (!token) {
+            return;
+        }
+        fluid.fetchResources({
+            prefs: {
+                url: fluid.stringTemplate(url, {token: token}),
+                options: {
+                    dataType: "json"
+                }
+            }
+        }, function (resourceSpec) {
+            var prefs = resourceSpec.prefs.resourceText;
+            if (prefs.isError) {
+                return;
+            }
+            afterReadPrefs.fire({
+                token: token,
+                prefs: prefs
+            });
+        });
+    };
 
     $(document).ready(function () {
         gpii.NPGatheringTool(".gpii-NPGatheringTool");
