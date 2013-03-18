@@ -39,6 +39,7 @@ https://github.com/gpii/universal/LICENSE.txt
             "changeApplierOptions.resolverSetConfig": "resolverSetConfig"
         },
         selectors: {
+            save: ".gpii-NPGatheringTool-save",
             linuxGroupLabel: ".gpii-NPGatheringTool-linuxGroupLabel",
             tokenLabel: ".gpii-NPGatheringTool-token-label",
             token: ".gpii-NPGatheringTool-token",
@@ -59,15 +60,25 @@ https://github.com/gpii/universal/LICENSE.txt
             updatePrefs: null
         },
         listeners: {
-            updatePrefs: "{that}.updatePrefs"
+            updatePrefs: "{that}.updatePrefs",
+            afterRender: "{that}.bindSave"
         },
         invokers: {
             updatePrefs: {
                 funcName: "gpii.NPGatheringTool.updatePrefs",
                 args: ["{that}.applier", "{arguments}.0", "{that}.refreshView"]
+            },
+            save: {
+                funcName: "gpii.NPGatheringTool.save",
+                args: []
+            },
+            bindSave: {
+                funcName: "gpii.NPGatheringTool.bindSave",
+                args: ["{that}.dom.save", "{that}.save"]
             }
         },
         strings: {
+            save: "Save",
             tokenLabel: "Token",
             linuxGroupLabel: "Linux",
             orcaRateLabel: "Rate"
@@ -79,6 +90,9 @@ https://github.com/gpii/universal/LICENSE.txt
         },
         renderOnInit: true,
         protoTree: {
+            save: {
+                messagekey: "save"
+            },
             tokenLabel: {
                 messagekey: "tokenLabel"
             },
@@ -100,6 +114,14 @@ https://github.com/gpii/universal/LICENSE.txt
     gpii.NPGatheringTool.updatePrefs = function (applier, model, refreshView) {
         applier.requestChange("", model);
         refreshView();
+    };
+
+    gpii.NPGatheringTool.bindSave = function (saveButton, save) {
+        saveButton.click(save);
+    };
+
+    gpii.NPGatheringTool.save = function (that) {
+        // TODO
     };
 
     fluid.defaults("gpii.tokenReader", {
