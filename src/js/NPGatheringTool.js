@@ -59,6 +59,7 @@ https://github.com/gpii/universal/LICENSE.txt
         events: {
             updatePrefs: null
         },
+        prefsUrl: "/prefs/%token",
         listeners: {
             updatePrefs: "{that}.updatePrefs",
             afterRender: "{that}.bindSave"
@@ -70,7 +71,7 @@ https://github.com/gpii/universal/LICENSE.txt
             },
             save: {
                 funcName: "gpii.NPGatheringTool.save",
-                args: []
+                args: "{that}"
             },
             bindSave: {
                 funcName: "gpii.NPGatheringTool.bindSave",
@@ -121,7 +122,16 @@ https://github.com/gpii/universal/LICENSE.txt
     };
 
     gpii.NPGatheringTool.save = function (that) {
-        // TODO
+        var token = that.model.token;
+        if (!token) {
+            return;
+        }
+        $.post(fluid.stringTemplate(that.options.prefsUrl, {token: token}), that.model.prefs).done(function (data) {
+            if (data.isError) {
+                return;
+            }
+            location.replace(token);
+        });
     };
 
     fluid.defaults("gpii.tokenReader", {
@@ -137,7 +147,7 @@ https://github.com/gpii/universal/LICENSE.txt
                 args: ["{that}.options.token", "{that}.options.prefsUrl", "{that}.events.afterReadPrefs"]
             }
         },
-        prefsUrl: "/prefs/%token",
+        prefsUrl: "{gpii.NPGatheringTool}.options.prefsUrl",
         events: {
             afterReadPrefs: "{gpii.NPGatheringTool}.events.updatePrefs"
         },

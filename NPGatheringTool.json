@@ -30,7 +30,7 @@
                 "invokers": {
                     "handle": {
                         "funcName": "gpii.requests.request.handler.NPGatheringToolSetPrefs",
-                        "args": ["{requestProxy}", "{request}.req.params.token", "{NPGatheringTool}.preferencesSource"]
+                        "args": ["{requestProxy}", "{request}.req", "{NPGatheringTool}.preferencesSource"]
                     }
                 }
             }
@@ -73,6 +73,7 @@
             "funcName": "gpii.dataSource.URL",
             "options": {
                 "url": "{gpii.NPGatheringTool}.options.preferencesUrl",
+                "writable": true,
                 "termMap": {
                     "token": "%token"
                 }
