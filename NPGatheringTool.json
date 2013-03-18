@@ -24,13 +24,26 @@
         }
     }, {
         "demandingName": "gpii.requests.request.handler",
-        "contextNames": "NPGatheringToolSet",
+        "contextNames": "NPGatheringToolSetPrefs",
         "demandSpec": {
             "options": {
                 "invokers": {
                     "handle": {
-                        "funcName": "gpii.requests.request.handler.NPGatheringToolSet",
-                        "args": ["{requestProxy}", "{request}.req", "{NPGatheringTool}.preferencesSource"]
+                        "funcName": "gpii.requests.request.handler.NPGatheringToolSetPrefs",
+                        "args": ["{requestProxy}", "{request}.req.params.token", "{NPGatheringTool}.preferencesSource"]
+                    }
+                }
+            }
+        }
+    }, {
+        "demandingName": "gpii.requests.request.handler",
+        "contextNames": "NPGatheringToolGetPrefs",
+        "demandSpec": {
+            "options": {
+                "invokers": {
+                    "handle": {
+                        "funcName": "gpii.requests.request.handler.NPGatheringToolGetPrefs",
+                        "args": ["{requestProxy}", "{request}.req.params.token", "{NPGatheringTool}.preferencesSource"]
                     }
                 }
             }
@@ -46,20 +59,44 @@
             }
         }
     }, {
+        "demandingName": "rawTemplateSource",
+        "contextNames": "gpii.NPGatheringTool",
+        "demandSpec": {
+            "options": {
+                "url": "{gpii.NPGatheringTool}.options.templates.NPGatheringToolGet"
+            }
+        }
+    }, {
+        "demandingName": "rawPreferencesSource",
+        "contextNames": "gpii.NPGatheringTool",
+        "demandSpec": {
+            "funcName": "gpii.dataSource.URL",
+            "options": {
+                "url": "{gpii.NPGatheringTool}.options.preferencesUrl",
+                "termMap": {
+                    "token": "%token"
+                }
+            }
+        }
+    }, {
+        "demandingName": "preferencesSource",
+        "contextNames": "gpii.NPGatheringTool",
+        "demandSpec": {
+            "options": {
+                "components": {
+                    "rawSource": "{rawPreferencesSource}"
+                }
+            }
+        }
+    }, {
         "demandingName": "gpii.urlExpander",
         "contextNames": "gpii.NPGatheringTool",
         "demandSpec": {
             "funcName": "gpii.urlExpander.development"
         }
     }, {
-        "demandingName": "rawTemplateSource",
-        "contextNames": "gpii.NPGatheringTool",
-        "demandSpec": {
-            "funcName": "gpii.dataSource.URL"
-        }
-    }, {
         "demandingName": "gpii.dataSource.modelParser.parse",
-        "contextNames": ["gpii.dataSource.modelParser", "gpii.NPGatheringTool"],
+        "contextNames": ["gpii.dataSource.modelParser", "gpii.templateSource"],
         "demandSpec": {
             "funcName": "fluid.identity",
             "args": "{arguments}.0"
