@@ -43,14 +43,18 @@ https://github.com/gpii/universal/LICENSE.txt
             label: "N/P Gathering Tool",
             tokenLabel: "Token",
             linuxGroupLabel: "Linux",
+            windowsGroupLabel: "Windows",
             orcaGroupLabel: "Orca",
+            nvdaGroupLabel: "NVDA",
             "orca.voice.default.familyLabel": "Voice Default Family",
             "orca.voice.default.rateLabel": "Voice Default Rate",
             "orca.enableTutorialMessagesLabel": "Enable Tutorial Messages",
             "orca.enableEchoByCharacterLabel": "Enable Echo by Character",
             "orca.enableEchoByWordLabel": "Enable Echo by Word",
             "orca.enableBrailleLabel": "Enable Braille",
-            "orca.verbalizePunctuationStyleLabel": "Verbalize Punctuation Style"
+            "orca.verbalizePunctuationStyleLabel": "Verbalize Punctuation Style",
+            "nvda.speech.espeak.rateBoostLabel": "Rate Boost" 
+            
         },
         selectors: {
             save: ".gpii-NPGatheringTool-save",
@@ -61,6 +65,8 @@ https://github.com/gpii/universal/LICENSE.txt
             label: ".gpii-NPGatheringTool-label",
             linuxGroupLabel: ".gpii-NPGatheringTool-linuxGroupLabel",
             orcaGroupLabel: ".gpii-NPGatheringTool-orcaGroupLabel",
+            windowsGroupLabel: ".gpii-NPGatheringTool-windowsGroupLabel",
+            nvdaGroupLabel: ".gpii-NPGatheringTool-nvdaGroupLabel",
 
             "orca.voice.default.family": ".gpii-NPGatheringTool-orca-voice-default-family",
             "orca.voice.default.familyLabel": ".gpii-NPGatheringTool-orca-voice-default-familyLabel",
@@ -75,7 +81,11 @@ https://github.com/gpii/universal/LICENSE.txt
             "orca.enableBraille": ".gpii-NPGatheringTool-orca-enableBraille",
             "orca.enableBrailleLabel": ".gpii-NPGatheringTool-orca-enableBrailleLabel",
             "orca.verbalizePunctuationStyle": ".gpii-NPGatheringTool-orca-verbalizePunctuationStyle",
-            "orca.verbalizePunctuationStyleLabel": ".gpii-NPGatheringTool-orca-verbalizePunctuationStyleLabel"
+            "orca.verbalizePunctuationStyleLabel": ".gpii-NPGatheringTool-orca-verbalizePunctuationStyleLabel",
+            
+            "nvda.speech.espeak.rateBoostLabel": ".gpii-NPGatheringTool-nvda-speech-espeak-rateBoostLabel",
+            "nvda.speech.espeak.rateBoost": ".gpii-NPGatheringTool-nvda-speech-espeak-rateBoost" 
+            
         },
         model: {
             token: "",
@@ -171,8 +181,14 @@ https://github.com/gpii/universal/LICENSE.txt
             linuxGroupLabel: {
                 messagekey: "linuxGroupLabel"
             },
+            windowsGroupLabel: {
+                messagekey: "windowsGroupLabel"
+            },
             orcaGroupLabel: {
                 messagekey: "orcaGroupLabel"
+            },
+            nvdaGroupLabel: {
+                messagekey: "nvdaGroupLabel"
             },
             "orca.voice.default.family": {
                 optionnames: "${voicesDefaultFamilyNames}",
@@ -216,6 +232,7 @@ https://github.com/gpii/universal/LICENSE.txt
                 }
             },
             "orca.verbalizePunctuationStyleLabel": {messagekey: "orca.verbalizePunctuationStyleLabel"},
+            "nvda.speech\\.espeak\\.rateBoost": "${prefs.http://registry\\.gpii\\.org/applications/org\\.nvda-project.0.value.speech\\.espeak\\.rateBoost}"
         },
         events: {
             updatePrefs: null
