@@ -32,10 +32,10 @@ label {
 .ui-slider.ui-slider-horizontal {
     width: 260px;
 }
-.gpii-NPGatheringTool-orca-voice-default-rate div {
+.gpii-slider div {
     display: inline-block;
 }
-.gpii-NPGatheringTool-orca-voice-default-rate #min-text-size {
+.gpii-slider #min-text-size {
     width: 40px;
 }
 input[type="checkbox"] {
