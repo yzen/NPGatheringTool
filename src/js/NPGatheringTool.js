@@ -47,7 +47,9 @@ https://github.com/gpii/universal/LICENSE.txt
             "orca.voice.default.familyLabel": "Voice Default Family",
             "orca.voice.default.rateLabel": "Voice Default Rate",
             "orca.enableTutorialMessagesLabel": "Enable Tutorial Messages",
-            "orca.enableEchoByCharacterLabel": "Enable Echo by Character"
+            "orca.enableEchoByCharacterLabel": "Enable Echo by Character",
+            "orca.enableEchoByWordLabel": "Enable Echo by Word",
+            "orca.enableBrailleLabel": "Enable Braille"
         },
         selectors: {
             save: ".gpii-NPGatheringTool-save",
@@ -66,7 +68,11 @@ https://github.com/gpii/universal/LICENSE.txt
             "orca.enableTutorialMessages": ".gpii-NPGatheringTool-orca-enableTutorialMessages",
             "orca.enableTutorialMessagesLabel": ".gpii-NPGatheringTool-orca-enableTutorialMessagesLabel",
             "orca.enableEchoByCharacter": ".gpii-NPGatheringTool-orca-enableEchoByCharacter",
-            "orca.enableEchoByCharacterLabel": ".gpii-NPGatheringTool-orca-enableEchoByCharacterLabel"
+            "orca.enableEchoByCharacterLabel": ".gpii-NPGatheringTool-orca-enableEchoByCharacterLabel",
+            "orca.enableEchoByWord": ".gpii-NPGatheringTool-orca-enableEchoByWord",
+            "orca.enableEchoByWordLabel": ".gpii-NPGatheringTool-orca-enableEchoByWordLabel",
+            "orca.enableBraille": ".gpii-NPGatheringTool-orca-enableBraille",
+            "orca.enableBrailleLabel": ".gpii-NPGatheringTool-orca-enableBrailleLabel"
         },
         model: {
             token: "",
@@ -154,7 +160,11 @@ https://github.com/gpii/universal/LICENSE.txt
             "orca.enableTutorialMessages": "${prefs.http://registry\\.gpii\\.org/applications/org\\.gnome\\.orca.0.value.enableTutorialMessages}",
             "orca.enableTutorialMessagesLabel": {messagekey: "orca.enableTutorialMessagesLabel"},
             "orca.enableEchoByCharacter": "${prefs.http://registry\\.gpii\\.org/applications/org\\.gnome\\.orca.0.value.enableEchoByCharacter}",
-            "orca.enableEchoByCharacterLabel": {messagekey: "orca.enableEchoByCharacterLabel"}
+            "orca.enableEchoByCharacterLabel": {messagekey: "orca.enableEchoByCharacterLabel"},
+            "orca.enableEchoByWord": "${prefs.http://registry\\.gpii\\.org/applications/org\\.gnome\\.orca.0.value.enableEchoByWord}",
+            "orca.enableEchoByWordLabel": {messagekey: "orca.enableEchoByWordLabel"},
+            "orca.enableBraille": "${prefs.http://registry\\.gpii\\.org/applications/org\\.gnome\\.orca.0.value.enableBraille}",
+            "orca.enableBrailleLabel": {messagekey: "orca.enableBrailleLabel"}
         },
         events: {
             updatePrefs: null
