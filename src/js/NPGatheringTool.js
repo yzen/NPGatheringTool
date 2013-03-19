@@ -107,7 +107,7 @@ https://github.com/gpii/universal/LICENSE.txt
             "orca.voice.default.rate": {
                 decorators: {
                     type: "fluid",
-                    func: "fluid.textfieldSlider",
+                    func: "gpii.textfieldSlider",
                     options: {
                         elPath: "prefs.http://registry\\.gpii\\.org/applications/org\\.gnome\\.orca\\.voice\\.default.0.value.rate",
                         model: {
@@ -186,7 +186,7 @@ https://github.com/gpii/universal/LICENSE.txt
             value: {
                 expander: {
                     func: "fluid.get",
-                    args: ["{gpii.NPGatheringTool}.model", "{that}.options.elPath"]
+                    args: ["{gpii.NPGatheringTool}.model", "{that}.options.elPath", "{gpii.NPGatheringTool}.options.resolverGetConfig"]
                 }
             }
         },
