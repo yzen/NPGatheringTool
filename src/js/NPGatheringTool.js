@@ -49,7 +49,8 @@ https://github.com/gpii/universal/LICENSE.txt
             "orca.enableTutorialMessagesLabel": "Enable Tutorial Messages",
             "orca.enableEchoByCharacterLabel": "Enable Echo by Character",
             "orca.enableEchoByWordLabel": "Enable Echo by Word",
-            "orca.enableBrailleLabel": "Enable Braille"
+            "orca.enableBrailleLabel": "Enable Braille",
+            "orca.verbalizePunctuationStyleLabel": "Verbalize Punctuation Style"
         },
         selectors: {
             save: ".gpii-NPGatheringTool-save",
@@ -72,7 +73,9 @@ https://github.com/gpii/universal/LICENSE.txt
             "orca.enableEchoByWord": ".gpii-NPGatheringTool-orca-enableEchoByWord",
             "orca.enableEchoByWordLabel": ".gpii-NPGatheringTool-orca-enableEchoByWordLabel",
             "orca.enableBraille": ".gpii-NPGatheringTool-orca-enableBraille",
-            "orca.enableBrailleLabel": ".gpii-NPGatheringTool-orca-enableBrailleLabel"
+            "orca.enableBrailleLabel": ".gpii-NPGatheringTool-orca-enableBrailleLabel",
+            "orca.verbalizePunctuationStyle": ".gpii-NPGatheringTool-orca-verbalizePunctuationStyle",
+            "orca.verbalizePunctuationStyleLabel": ".gpii-NPGatheringTool-orca-verbalizePunctuationStyleLabel"
         },
         model: {
             token: "",
@@ -164,7 +167,21 @@ https://github.com/gpii/universal/LICENSE.txt
             "orca.enableEchoByWord": "${prefs.http://registry\\.gpii\\.org/applications/org\\.gnome\\.orca.0.value.enableEchoByWord}",
             "orca.enableEchoByWordLabel": {messagekey: "orca.enableEchoByWordLabel"},
             "orca.enableBraille": "${prefs.http://registry\\.gpii\\.org/applications/org\\.gnome\\.orca.0.value.enableBraille}",
-            "orca.enableBrailleLabel": {messagekey: "orca.enableBrailleLabel"}
+            "orca.enableBrailleLabel": {messagekey: "orca.enableBrailleLabel"},
+            "orca.verbalizePunctuationStyle": {
+                decorators: {
+                    type: "fluid",
+                    func: "gpii.textfieldSlider",
+                    options: {
+                        elPath: "prefs.http://registry\\.gpii\\.org/applications/org\\.gnome\\.orca.0.value.verbalizePunctuationStyle",
+                        model: {
+                            min: 0,
+                            max: 3
+                        }
+                    }
+                }
+            },
+            "orca.verbalizePunctuationStyleLabel": {messagekey: "orca.verbalizePunctuationStyleLabel"},
         },
         events: {
             updatePrefs: null
