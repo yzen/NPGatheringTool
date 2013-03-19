@@ -90,6 +90,7 @@ https://github.com/gpii/universal/LICENSE.txt
                 "id", "is", "it", "jbo", "ka", "kn", "ku", "la", "lv", "mk", "ml", "nl", "no", "pap", "pl",
                 "pt", "pt", "ro", "ru", "sk", "sq", "sr", "sv", "sw", "ta", "tr", "vi", "zh", "zh"],
             prefs: {
+                // LINUX
                 "http://registry.gpii.org/applications/org.gnome.orca.voice.default": [{
                     value: {
                         family: "en",
@@ -116,6 +117,39 @@ https://github.com/gpii/universal/LICENSE.txt
                         "mag-factor": 1,
                         "screen-position": "full-screen",
                         "show-cross-hairs": false
+                    }
+                }],
+                // WINDOWS
+                "http://registry.gpii.org/applications/org.nvda-project": [{
+                    value: {
+                        "speech\\.espeak\\.voice": "en\\en",
+                        "speech\\.espeak\\.rate": 1,
+                        "speech\\.espeak\\.rateBoost": false,
+                        "reviewCursor\\.followFocus": false,
+                        "reviewCursor\\.followCaret": false,
+                        "reviewCursor\\.followMouse": false,
+                        "presentation\\.reportHelpBalloons": false,
+                        "keyboard\\.speakTypedCharacters": false,
+                        "keyboard\\.speakTypedWords": false,
+                        "speech\\.espeak\\.sayCapForCapitals": false,
+                        "speech\\.symbolLevel": 0,
+                        "virtualBuffers\\.autoSayAllOnPageLoad": false,
+                        "speech\\.synth": null,
+                        "speech\\.outputDevice": null
+                    }
+                }],
+                "http://registry.gpii.org/applications/com.microsoft.windows.cursors": [{
+                    value: {
+                        // TODO
+                    }
+                }],
+                "http://registry.gpii.org/applications/com.microsoft.windows.magnifier": [{
+                    value: {
+                        "Magnification": 100,
+                        "FollowFocus": 0,
+                        "FollowCaret": 0,
+                        "FollowMouse": 0,
+                        "MagnificationPosition": 1
                     }
                 }]
             }
