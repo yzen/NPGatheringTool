@@ -40,11 +40,14 @@ https://github.com/gpii/universal/LICENSE.txt
         },
         strings: {
             save: "Save",
+            label: "N/P Gathering Tool",
             tokenLabel: "Token",
             linuxGroupLabel: "Linux",
-            "orca.voice.default.familyLabel": "Orca Voice Default Family",
-            "orca.voice.default.rateLabel": "Orca Voice Default Rate",
-            "orca.enableTutorialMessagesLabel": "Orca Enable Tutorial Messages"
+            orcaGroupLabel: "Orca",
+            "orca.voice.default.familyLabel": "Voice Default Family",
+            "orca.voice.default.rateLabel": "Voice Default Rate",
+            "orca.enableTutorialMessagesLabel": "Enable Tutorial Messages",
+            "orca.enableEchoByCharacterLabel": "Enable Echo by Character"
         },
         selectors: {
             save: ".gpii-NPGatheringTool-save",
@@ -52,14 +55,18 @@ https://github.com/gpii/universal/LICENSE.txt
             tokenLabel: ".gpii-NPGatheringTool-token-label",
             token: ".gpii-NPGatheringTool-token",
 
+            label: ".gpii-NPGatheringTool-label",
             linuxGroupLabel: ".gpii-NPGatheringTool-linuxGroupLabel",
+            orcaGroupLabel: ".gpii-NPGatheringTool-orcaGroupLabel",
 
             "orca.voice.default.family": ".gpii-NPGatheringTool-orca-voice-default-family",
             "orca.voice.default.familyLabel": ".gpii-NPGatheringTool-orca-voice-default-familyLabel",
             "orca.voice.default.rate": ".gpii-NPGatheringTool-orca-voice-default-rate",
             "orca.voice.default.rateLabel": ".gpii-NPGatheringTool-orca-voice-default-rateLabel",
             "orca.enableTutorialMessages": ".gpii-NPGatheringTool-orca-enableTutorialMessages",
-            "orca.enableTutorialMessagesLabel": ".gpii-NPGatheringTool-orca-enableTutorialMessagesLabel"
+            "orca.enableTutorialMessagesLabel": ".gpii-NPGatheringTool-orca-enableTutorialMessagesLabel",
+            "orca.enableEchoByCharacter": ".gpii-NPGatheringTool-orca-enableEchoByCharacter",
+            "orca.enableEchoByCharacterLabel": ".gpii-NPGatheringTool-orca-enableEchoByCharacterLabel"
         },
         model: {
             token: "",
@@ -115,8 +122,14 @@ https://github.com/gpii/universal/LICENSE.txt
                 messagekey: "tokenLabel"
             },
             token: "${token}",
+            label: {
+                messagekey: "label"
+            },
             linuxGroupLabel: {
                 messagekey: "linuxGroupLabel"
+            },
+            orcaGroupLabel: {
+                messagekey: "orcaGroupLabel"
             },
             "orca.voice.default.family": {
                 optionnames: "${voicesDefaultFamilyNames}",
@@ -140,6 +153,8 @@ https://github.com/gpii/universal/LICENSE.txt
             "orca.voice.default.rateLabel": {messagekey: "orca.voice.default.rateLabel"},
             "orca.enableTutorialMessages": "${prefs.http://registry\\.gpii\\.org/applications/org\\.gnome\\.orca.0.value.enableTutorialMessages}",
             "orca.enableTutorialMessagesLabel": {messagekey: "orca.enableTutorialMessagesLabel"},
+            "orca.enableEchoByCharacter": "${prefs.http://registry\\.gpii\\.org/applications/org\\.gnome\\.orca.0.value.enableEchoByCharacter}",
+            "orca.enableEchoByCharacterLabel": {messagekey: "orca.enableEchoByCharacterLabel"}
         },
         events: {
             updatePrefs: null
