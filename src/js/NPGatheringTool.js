@@ -43,7 +43,8 @@ https://github.com/gpii/universal/LICENSE.txt
             tokenLabel: "Token",
             linuxGroupLabel: "Linux",
             "orca.voice.default.familyLabel": "Orca Voice Default Family",
-            "orca.voice.default.rateLabel": "Orca Voice Default Rate"
+            "orca.voice.default.rateLabel": "Orca Voice Default Rate",
+            "orca.enableTutorialMessagesLabel": "Orca Enable Tutorial Messages"
         },
         selectors: {
             save: ".gpii-NPGatheringTool-save",
@@ -56,14 +57,29 @@ https://github.com/gpii/universal/LICENSE.txt
             "orca.voice.default.family": ".gpii-NPGatheringTool-orca-voice-default-family",
             "orca.voice.default.familyLabel": ".gpii-NPGatheringTool-orca-voice-default-familyLabel",
             "orca.voice.default.rate": ".gpii-NPGatheringTool-orca-voice-default-rate",
-            "orca.voice.default.rateLabel": ".gpii-NPGatheringTool-orca-voice-default-rateLabel"
+            "orca.voice.default.rateLabel": ".gpii-NPGatheringTool-orca-voice-default-rateLabel",
+            "orca.enableTutorialMessages": ".gpii-NPGatheringTool-orca-enableTutorialMessages",
+            "orca.enableTutorialMessagesLabel": ".gpii-NPGatheringTool-orca-enableTutorialMessagesLabel"
         },
         model: {
             token: "",
+            voicesDefaultFamilyNames: ["english", "english-us", "english-scottish", "english-westindies",
+                "afrikaans", "bulgarian-test", "bosnian", "catalan", "czech", "welsh-test", "danish",
+                "german", "greek", "greek-ancient", "esperanto", "spanish", "spanish-latin-american",
+                "estonian", "finnish", "french", "belgian", "hindi", "croatian", "hungarian", "armenian",
+                "armenian-west", "indonesian-test", "icelandic-test", "italian", "lojban", "georgian-test",
+                "kannada", "kurdish", "latin", "latvian", "macedonian-test", "malayalam", "dutch-test",
+                "norwegian", "papiamento-test", "polish", "brazil", "portugal", "romanian", "russian_test",
+                "slovak", "albanian", "serbian", "swedish", "swahili-test", "tamil", "turkish", "vietnam",
+                "mandarin", "cantonese"],
+            voicesDefaultFamilyValues: ["en", "en", "en", "en", "af", "bg", "bs", "ca", "cs", "cy", "da",
+                "de", "el", "grc", "eo", "es", "es", "et", "fi", "fr", "fr", "hi", "hr", "hu", "hy", "hy",
+                "id", "is", "it", "jbo", "ka", "kn", "ku", "la", "lv", "mk", "ml", "nl", "no", "pap", "pl",
+                "pt", "pt", "ro", "ru", "sk", "sq", "sr", "sv", "sw", "ta", "tr", "vi", "zh", "zh"],
             prefs: {
                 "http://registry.gpii.org/applications/org.gnome.orca.voice.default": [{
                     value: {
-                        family: null,
+                        family: "en",
                         rate: 0
                     }
                 }],
@@ -102,7 +118,11 @@ https://github.com/gpii/universal/LICENSE.txt
             linuxGroupLabel: {
                 messagekey: "linuxGroupLabel"
             },
-            "orca.voice.default.family": "${prefs.http://registry\\.gpii\\.org/applications/org\\.gnome\\.orca\\.voice\\.default.0.value.family}",
+            "orca.voice.default.family": {
+                optionnames: "${voicesDefaultFamilyNames}",
+                optionlist: "${voicesDefaultFamilyValues}",
+                selection: "${prefs.http://registry\\.gpii\\.org/applications/org\\.gnome\\.orca\\.voice\\.default.0.value.family}"
+            },
             "orca.voice.default.familyLabel": {messagekey: "orca.voice.default.familyLabel"},
             "orca.voice.default.rate": {
                 decorators: {
@@ -117,7 +137,9 @@ https://github.com/gpii/universal/LICENSE.txt
                     }
                 }
             },
-            "orca.voice.default.rateLabel": {messagekey: "orca.voice.default.rateLabel"}
+            "orca.voice.default.rateLabel": {messagekey: "orca.voice.default.rateLabel"},
+            "orca.enableTutorialMessages": "${prefs.http://registry\\.gpii\\.org/applications/org\\.gnome\\.orca.0.value.enableTutorialMessages}",
+            "orca.enableTutorialMessagesLabel": {messagekey: "orca.enableTutorialMessagesLabel"},
         },
         events: {
             updatePrefs: null
