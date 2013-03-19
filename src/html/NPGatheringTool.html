@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>N/P Gathering Tool</title>
-        <link rel="stylesheet" type="text/css" href="./src/lib/bootstrap/bootstrap.css" />
+        <link rel="stylesheet" type="text/css" href="./src/lib/bootstrap/css/bootstrap.min.css" />
         <link rel="stylesheet" type="text/css" href="./src/lib/jquery-ui-1.10.2.custom/css/hot-sneaks/jquery-ui-1.10.2.custom.min.css" />
         <link rel="stylesheet" type="text/css" href="./src/css/NPGatheringTool.css" />
 
@@ -28,26 +28,39 @@
         <script type="text/javascript" src="./src/js/NPGatheringTool.js"></script>
     </head>
     <body class="gpii-NPGatheringTool container">
+        <h1>N/P Gathering Tool</h1>
+
+        <hr>
         <label class="gpii-NPGatheringTool-token-label"></label>
         <input type="text" class="gpii-NPGatheringTool-token"/>
+        <form>
+            <fieldset>
 
-        <div class="gpii-NPGatheringTool-linuxGroup">
-            <p class="gpii-NPGatheringTool-linuxGroupLabel"></p>
+                <legend class="gpii-NPGatheringTool-linuxGroupLabel"></legend>
+                <div class="gpii-NPGatheringTool-linuxGroup hero-unit">
 
-            <label class="gpii-NPGatheringTool-orca-voice-default-familyLabel"></label>
-            <select class="gpii-NPGatheringTool-orca-voice-default-family"></select>
+                    <div>
+                        <label class="gpii-NPGatheringTool-orca-voice-default-familyLabel"></label>
+                        <select class="gpii-NPGatheringTool-orca-voice-default-family"></select>
+                    </div>
 
-            <label class="gpii-NPGatheringTool-orca-voice-default-rateLabel"></label>
-            <div class="gpii-NPGatheringTool-orca-voice-default-rate">
-                <div class="flc-textfieldSlider-slider"> </div>
-                <div><input id="min-text-size" class="flc-textfieldSlider-field" type="text" /></div>
-            </div>
+                    <div>
+                        <label class="gpii-NPGatheringTool-orca-voice-default-rateLabel"></label>
+                        <div class="gpii-NPGatheringTool-orca-voice-default-rate">
+                            <div class="flc-textfieldSlider-slider"> </div>
+                            <div><input id="min-text-size" class="flc-textfieldSlider-field" type="text" /></div>
+                        </div>
+                    </div>
 
-            <label class="gpii-NPGatheringTool-orca-enableTutorialMessagesLabel"></label>
-            <input type="checkbox" class="gpii-NPGatheringTool-orca-enableTutorialMessages" />
+                    <div>
+                        <label class="gpii-NPGatheringTool-orca-enableTutorialMessagesLabel"></label>
+                        <input type="checkbox" class="gpii-NPGatheringTool-orca-enableTutorialMessages" />
+                    </div>
 
-        </div>
+                </div>
 
-        <input type="button" class="gpii-NPGatheringTool-save btn btn-primary btn-large"/>
+                <input type="button" class="gpii-NPGatheringTool-save btn btn-primary btn-large"/>
+            </fieldset>
+        </form>
     </body>
 </html>
