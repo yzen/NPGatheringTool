@@ -3,6 +3,8 @@
     <head>
         <meta charset="utf-8">
         <title>N/P Gathering Tool</title>
+        <link rel="stylesheet" type="text/css" href="./src/lib/bootstrap/bootstrap.css" />
+        <link rel="stylesheet" type="text/css" href="./src/lib/jquery-ui-1.10.2.custom/css/hot-sneaks/jquery-ui-1.10.2.custom.min.css" />
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
         <script type="text/javascript" src="./infusion/src/webapp/framework/core/js/Fluid.js"></script>
         <script type="text/javascript" src="./infusion/src/webapp/framework/core/js/DataBinding.js"></script>
@@ -17,16 +19,31 @@
         <script type="text/javascript" src="./infusion/src/webapp/framework/renderer/js/fluidParser.js"></script>
         <script type="text/javascript" src="./infusion/src/webapp/framework/renderer/js/fluidRenderer.js"></script>
         <script type="text/javascript" src="./infusion/src/webapp/framework/renderer/js/RendererUtilities.js"></script>
+        <script type="text/javascript" src="./src/js/TextFieldSlider.js"></script>
+
+        <script type="text/javascript" src="./src/lib/jquery-ui-1.10.2.custom/js/jquery-ui-1.10.2.custom.min.js"></script>
+
         <script type="text/javascript" src="./src/js/NPGatheringTool.js"></script>
     </head>
-    <body class="gpii-NPGatheringTool">
+    <body class="gpii-NPGatheringTool container">
         <label class="gpii-NPGatheringTool-token-label"></label>
         <input type="text" class="gpii-NPGatheringTool-token"/>
+
         <div class="gpii-NPGatheringTool-linuxGroup">
             <p class="gpii-NPGatheringTool-linuxGroupLabel"></p>
-            <label class="gpii-NPGatheringTool-orca-rate-label"></label>
-            <input type="text" class="gpii-NPGatheringTool-orca-rate"/>
+
+            <label class="gpii-NPGatheringTool-orca-voice-default-familyLabel"></label>
+            <input type="text" class="gpii-NPGatheringTool-orca-voice-default-family"/>
+
+            <label class="gpii-NPGatheringTool-orca-voice-default-rateLabel"></label>
+            <!-- <div class="gpii-NPGatheringTool-orca-voice-default-rate"></div> -->
+            <div class="gpii-NPGatheringTool-orca-voice-default-rate">
+                <div class="flc-textfieldSlider-slider"> </div>
+                <div><input id="min-text-size" class="flc-textfieldSlider-field" type="text" /></div>
+            </div>
+
         </div>
-        <input type="button" class="gpii-NPGatheringTool-save"/>
+
+        <input type="button" class="gpii-NPGatheringTool-save btn btn-primary btn-large"/>
     </body>
 </html>

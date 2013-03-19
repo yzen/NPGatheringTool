@@ -38,23 +38,86 @@ https://github.com/gpii/universal/LICENSE.txt
             // for FLUID-4935.
             "changeApplierOptions.resolverSetConfig": "resolverSetConfig"
         },
+        strings: {
+            save: "Save",
+            tokenLabel: "Token",
+            linuxGroupLabel: "Linux",
+            "orca.voice.default.familyLabel": "Orca Voice Default Family",
+            "orca.voice.default.rateLabel": "Orca Voice Default Rate"
+        },
         selectors: {
             save: ".gpii-NPGatheringTool-save",
-            linuxGroupLabel: ".gpii-NPGatheringTool-linuxGroupLabel",
+
             tokenLabel: ".gpii-NPGatheringTool-token-label",
             token: ".gpii-NPGatheringTool-token",
-            orcaRate: ".gpii-NPGatheringTool-orca-rate",
-            orcaRateLabel: ".gpii-NPGatheringTool-orca-rate-label"
+
+            linuxGroupLabel: ".gpii-NPGatheringTool-linuxGroupLabel",
+
+            "orca.voice.default.family": ".gpii-NPGatheringTool-orca-voice-default-family",
+            "orca.voice.default.familyLabel": ".gpii-NPGatheringTool-orca-voice-default-familyLabel",
+            "orca.voice.default.rate": ".gpii-NPGatheringTool-orca-voice-default-rate",
+            "orca.voice.default.rateLabel": ".gpii-NPGatheringTool-orca-voice-default-rateLabel"
         },
         model: {
             token: "",
             prefs: {
+                "http://registry.gpii.org/applications/org.gnome.orca.voice.default": [{
+                    value: {
+                        family: null,
+                        rate: 0
+                    }
+                }],
                 "http://registry.gpii.org/applications/org.gnome.orca": [{
                     value: {
-                        rate: null
+                        enableTutorialMessages: false,
+                        enableEchoByCharacter: false,
+                        enableEchoByWord: false,
+                        enableBraille: false,
+                        verbalizePunctuationStyle: 0,
+                        sayAllStyle: 0
+                    }
+                }],
+                "http://registry.gpii.org/applications/org.gnome.desktop.a11y.applications": [{
+                    value: {
+                        "screen-magnifier-enabled": false // TODO
+                    }
+                }],
+                "http://registry.gpii.org/applications/org.gnome.desktop.a11y.magnifier": [{
+                    value: {
+                        "mag-factor": 1,
+                        "screen-position": "full-screen",
+                        "show-cross-hairs": false
                     }
                 }]
             }
+        },
+        protoTree: {
+            save: {
+                messagekey: "save"
+            },
+            tokenLabel: {
+                messagekey: "tokenLabel"
+            },
+            token: "${token}",
+            linuxGroupLabel: {
+                messagekey: "linuxGroupLabel"
+            },
+            "orca.voice.default.family": "${prefs.http://registry\\.gpii\\.org/applications/org\\.gnome\\.orca\\.voice\\.default.0.value.family}",
+            "orca.voice.default.familyLabel": {messagekey: "orca.voice.default.familyLabel"},
+            "orca.voice.default.rate": {
+                decorators: {
+                    type: "fluid",
+                    func: "fluid.textfieldSlider",
+                    options: {
+                        elPath: "prefs.http://registry\\.gpii\\.org/applications/org\\.gnome\\.orca\\.voice\\.default.0.value.rate",
+                        model: {
+                            min: 0,
+                            max: 100
+                        }
+                    }
+                }
+            },
+            "orca.voice.default.rateLabel": {messagekey: "orca.voice.default.rateLabel"}
         },
         events: {
             updatePrefs: null
@@ -78,34 +141,12 @@ https://github.com/gpii/universal/LICENSE.txt
                 args: ["{that}.dom.save", "{that}.save"]
             }
         },
-        strings: {
-            save: "Save",
-            tokenLabel: "Token",
-            linuxGroupLabel: "Linux",
-            orcaRateLabel: "Rate"
-        },
         components: {
             tokenReader: {
                 type: "gpii.tokenReader"
             }
         },
         renderOnInit: true,
-        protoTree: {
-            save: {
-                messagekey: "save"
-            },
-            tokenLabel: {
-                messagekey: "tokenLabel"
-            },
-            token: "${token}",
-            linuxGroupLabel: {
-                messagekey: "linuxGroupLabel"
-            },
-            orcaRateLabel: {
-                messagekey: "orcaRateLabel"
-            },
-            orcaRate: "${prefs.http://registry\\.gpii\\.org/applications/org\\.gnome\\.orca.0.value.rate}"
-        },
         // Both set and get configs are used to resolve elPaths that contain escaped "." characters
         // and to prevent these paths from being parsed into a nested structure.
         resolverGetConfig: gpii.NPGatheringTool.resolverGetConfig,
@@ -133,6 +174,29 @@ https://github.com/gpii/universal/LICENSE.txt
             location.replace(token);
         });
     };
+
+    fluid.defaults("gpii.textfieldSlider", {
+        gradeNames: ["autoInit", "fluid.textfieldSlider"],
+        elPath: "",
+        sliderOptions: {
+            orientation: "horizontal",
+            step: 1
+        },
+        model: {
+            value: {
+                expander: {
+                    func: "fluid.get",
+                    args: ["{gpii.NPGatheringTool}.model", "{that}.options.elPath"]
+                }
+            }
+        },
+        listeners: {
+            modelChanged: {
+                listener: "{gpii.NPGatheringTool}.applier.requestChange",
+                args: ["{that}.options.elPath", "{arguments}.0"]
+            }
+        }
+    });
 
     fluid.defaults("gpii.tokenReader", {
         gradeNames: ["autoInit", "fluid.eventedComponent"],
