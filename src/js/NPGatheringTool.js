@@ -46,6 +46,7 @@ https://github.com/gpii/universal/LICENSE.txt
             windowsGroupLabel: "Windows",
             orcaGroupLabel: "Orca",
             desktopGroupLabel: "Desktop",
+            a11yGroupLabel: "Accessibility",
             nvdaGroupLabel: "NVDA",
             "orca.voice.default.familyLabel": "Voice Default Family",
             "orca.voice.default.rateLabel": "Voice Default Rate",
@@ -60,6 +61,10 @@ https://github.com/gpii/universal/LICENSE.txt
             "desktop.icon-themeLabel": "Icon Theme",
             "desktop.text-scaling-factorLabel": "Text Scaling Factor",
             "desktop.cursor-sizeLabel": "Cursor Size",
+            "desktop.screen-magnifier-enabledLabel": "Enable Screen Magnifier",
+            "desktop.mag-factorLabel": "Magnification Factor",
+            "desktop.screen-positionLabel": "Screen Position",
+            "desktop.show-cross-hairsLabel": "Show Cross Hairs",
             "nvda.speech.espeak.rateBoostLabel": "Rate Boost"
             
         },
@@ -73,6 +78,7 @@ https://github.com/gpii/universal/LICENSE.txt
             linuxGroupLabel: ".gpii-NPGatheringTool-linuxGroupLabel",
             orcaGroupLabel: ".gpii-NPGatheringTool-orcaGroupLabel",
             desktopGroupLabel: ".gpii-NPGatheringTool-desktopGroupLabel",
+            a11yGroupLabel: ".gpii-NPGatheringTool-a11yGroupLabel",
             windowsGroupLabel: ".gpii-NPGatheringTool-windowsGroupLabel",
             nvdaGroupLabel: ".gpii-NPGatheringTool-nvdaGroupLabel",
 
@@ -102,6 +108,14 @@ https://github.com/gpii/universal/LICENSE.txt
             "desktop.text-scaling-factorLabel": ".gpii-NPGatheringTool-desktop-text-scaling-factorLabel",
             "desktop.cursor-size": ".gpii-NPGatheringTool-desktop-cursor-size",
             "desktop.cursor-sizeLabel": ".gpii-NPGatheringTool-desktop-cursor-sizeLabel",
+            "desktop.screen-magnifier-enabled": ".gpii-NPGatheringTool-desktop-screen-magnifier-enabled",
+            "desktop.screen-magnifier-enabledLabel": ".gpii-NPGatheringTool-desktop-screen-magnifier-enabledLabel",
+            "desktop.mag-factor": ".gpii-NPGatheringTool-desktop-mag-factor",
+            "desktop.mag-factorLabel": ".gpii-NPGatheringTool-desktop-mag-factorLabel",
+            "desktop.screen-position": ".gpii-NPGatheringTool-desktop-screen-position",
+            "desktop.screen-positionLabel": ".gpii-NPGatheringTool-desktop-screen-positionLabel",
+            "desktop.show-cross-hairs": ".gpii-NPGatheringTool-desktop-show-cross-hairs",
+            "desktop.show-cross-hairsLabel": ".gpii-NPGatheringTool-desktop-show-cross-hairsLabel",
 
             "nvda.speech.espeak.rateBoostLabel": ".gpii-NPGatheringTool-nvda-speech-espeak-rateBoostLabel",
             "nvda.speech.espeak.rateBoost": ".gpii-NPGatheringTool-nvda-speech-espeak-rateBoost" 
@@ -124,6 +138,7 @@ https://github.com/gpii/universal/LICENSE.txt
                 "pt", "pt", "ro", "ru", "sk", "sq", "sr", "sv", "sw", "ta", "tr", "vi", "zh", "zh"],
             "gtk-themeValues": ["HighContrast", "Adwaita"],
             "icon-themeValues": ["HighContrast", "gnome"],
+            "screen-positionValues": ["full-screen", "left-half", "right-half", "top-half", "bottom-half"],
             prefs: {
                 // LINUX
                 "http://registry.gpii.org/applications/org.gnome.orca.voice.default": [{
@@ -220,6 +235,9 @@ https://github.com/gpii/universal/LICENSE.txt
             },
             desktopGroupLabel: {
                 messagekey: "desktopGroupLabel"
+            },
+            a11yGroupLabel: {
+                messagekey: "a11yGroupLabel"
             },
             nvdaGroupLabel: {
                 messagekey: "nvdaGroupLabel"
@@ -325,6 +343,31 @@ https://github.com/gpii/universal/LICENSE.txt
                 }
             },
             "desktop.cursor-sizeLabel": {messagekey: "desktop.cursor-sizeLabel"},
+            "desktop.screen-magnifier-enabled":
+                "${prefs.http://registry\\.gpii\\.org/applications/org\\.gnome\\.desktop\\.a11y\\.applications.0.value.screen-magnifier-enabled}",
+            "desktop.screen-magnifier-enabledLabel": {messagekey: "desktop.screen-magnifier-enabledLabel"},
+            "desktop.mag-factor": {
+                decorators: {
+                    type: "fluid",
+                    func: "gpii.textfieldSlider",
+                    options: {
+                        elPath: "prefs.http://registry\\.gpii\\.org/applications/org\\.gnome\\.desktop\\.a11y\\.magnifier.0.value.mag-factor",
+                        model: {
+                            min: 1,
+                            max: 20
+                        }
+                    }
+                }
+            },
+            "desktop.mag-factorLabel": {messagekey: "desktop.mag-factorLabel"},
+            "desktop.screen-position": {
+                optionnames: "${screen-positionValues}",
+                optionlist: "${screen-positionValues}",
+                selection: "${prefs.http://registry\\.gpii\\.org/applications/org\\.gnome\\.desktop\\.a11y\\.magnifier.0.value.screen-position}"
+            },
+            "desktop.screen-positionLabel": {messagekey: "desktop.screen-positionLabel"},
+            "desktop.show-cross-hairs": "${prefs.http://registry\\.gpii\\.org/applications/org\\.gnome\\.desktop\\.a11y\\.magnifier.0.value.show-cross-hairs}",
+            "desktop.show-cross-hairsLabel": {messagekey: "desktop.show-cross-hairsLabel"},
             "nvda.speech\\.espeak\\.rateBoost": "${prefs.http://registry\\.gpii\\.org/applications/org\\.nvda-project.0.value.speech\\.espeak\\.rateBoost}"
         },
         events: {
