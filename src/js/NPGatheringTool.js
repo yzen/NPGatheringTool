@@ -897,11 +897,17 @@ https://github.com/gpii/universal/LICENSE.txt
         if (!token) {
             return;
         }
-        $.post(fluid.stringTemplate(that.options.prefsUrl, {token: token}), that.model.prefs).done(function (data) {
-            if (data.isError) {
-                return;
+        $.ajax({
+            url: fluid.stringTemplate(that.options.prefsUrl, {token: token}),
+            type: "POST",
+            data: JSON.stringify(that.model.prefs),
+            contentType: "application/json",
+            success: function (data) {
+                if (data.isError) {
+                    return;
+                }
+                location.replace(token);
             }
-            location.replace(token);
         });
     };
 
