@@ -66,7 +66,14 @@ https://github.com/gpii/universal/LICENSE.txt
             "desktop.screen-positionLabel": "Screen Position",
             "desktop.show-cross-hairsLabel": "Show Cross Hairs",
             "nvda.speech.espeak.rateLabel": "Rate",
-            "nvda.speech.espeak.rateBoostLabel": "Rate Boost"
+            "nvda.speech.espeak.rateBoostLabel": "Rate Boost",
+            "nvda.reviewCursor.followFocusLabel": "Follow Focus",
+            "nvda.reviewCursor.followCaretLabel": "Follow Caret",
+            "nvda.reviewCursor.followMouseLabel": "Follow Mouse",
+            "nvda.presentation.reportHelpBalloonsLabel": "Report Help Balloons",
+            "nvda.keyboard.speakTypedCharactersLabel": "Speak Typed Characters",
+            "nvda.keyboard.speakTypedWordsLabel": "Speak Typed Words",
+            "nvda.speech.espeak.sayCapForCapitalsLabel": "Say 'Cap' For Capitals"
             
         },
         selectors: {
@@ -121,7 +128,21 @@ https://github.com/gpii/universal/LICENSE.txt
             "nvda.speech.espeak.rate": ".gpii-NPGatheringTool-nvda-speech-espeak-rate",
             "nvda.speech.espeak.rateLabel": ".gpii-NPGatheringTool-nvda-speech-espeak-rateLabel",
             "nvda.speech.espeak.rateBoost": ".gpii-NPGatheringTool-nvda-speech-espeak-rateBoost",
-            "nvda.speech.espeak.rateBoostLabel": ".gpii-NPGatheringTool-nvda-speech-espeak-rateBoostLabel"
+            "nvda.speech.espeak.rateBoostLabel": ".gpii-NPGatheringTool-nvda-speech-espeak-rateBoostLabel",
+            "nvda.reviewCursor.followFocus": ".gpii-NPGatheringTool-nvda-reviewCursor-followFocus",
+            "nvda.reviewCursor.followFocusLabel": ".gpii-NPGatheringTool-nvda-reviewCursor-followFocusLabel",
+            "nvda.reviewCursor.followCaret": ".gpii-NPGatheringTool-nvda-reviewCursor-followCaret",
+            "nvda.reviewCursor.followCaretLabel": ".gpii-NPGatheringTool-nvda-reviewCursor-followCaretLabel",
+            "nvda.reviewCursor.followMouse": ".gpii-NPGatheringTool-nvda-reviewCursor-followMouse",
+            "nvda.reviewCursor.followMouseLabel": ".gpii-NPGatheringTool-nvda-reviewCursor-followMouseLabel",
+            "nvda.presentation.reportHelpBalloons": ".gpii-NPGatheringTool-nvda-presentation-reportHelpBalloons",
+            "nvda.presentation.reportHelpBalloonsLabel": ".gpii-NPGatheringTool-nvda-presentation-reportHelpBalloonsLabel",
+            "nvda.keyboard.speakTypedCharacters": ".gpii-NPGatheringTool-nvda-keyboard-speakTypedCharacters",
+            "nvda.keyboard.speakTypedCharactersLabel": ".gpii-NPGatheringTool-nvda-keyboard-speakTypedCharactersLabel",
+            "nvda.keyboard.speakTypedWords": ".gpii-NPGatheringTool-nvda-keyboard-speakTypedWords",
+            "nvda.keyboard.speakTypedWordsLabel": ".gpii-NPGatheringTool-nvda-keyboard-speakTypedWordsLabel",
+            "nvda.speech.espeak.sayCapForCapitals": ".gpii-NPGatheringTool-nvda-speech-espeak-sayCapForCapitals",
+            "nvda.speech.espeak.sayCapForCapitalsLabel": ".gpii-NPGatheringTool-nvda-speech-espeak-sayCapForCapitalsLabel"
             
         },
         model: {
@@ -202,13 +223,13 @@ https://github.com/gpii/universal/LICENSE.txt
                         "speech\\.espeak\\.voice": "en\\en",
                         "speech.espeak.rate": 1,
                         "speech.espeak.rateBoost": false,
-                        "reviewCursor\\.followFocus": false,
-                        "reviewCursor\\.followCaret": false,
-                        "reviewCursor\\.followMouse": false,
-                        "presentation\\.reportHelpBalloons": false,
-                        "keyboard\\.speakTypedCharacters": false,
-                        "keyboard\\.speakTypedWords": false,
-                        "speech\\.espeak\\.sayCapForCapitals": false,
+                        "reviewCursor.followFocus": false,
+                        "reviewCursor.followCaret": false,
+                        "reviewCursor.followMouse": false,
+                        "presentation.reportHelpBalloons": false,
+                        "keyboard.speakTypedCharacters": false,
+                        "keyboard.speakTypedWords": false,
+                        "speech.espeak.sayCapForCapitals": false,
                         "speech\\.symbolLevel": 0,
                         "virtualBuffers\\.autoSayAllOnPageLoad": false,
                         "speech\\.synth": null,
@@ -401,7 +422,21 @@ https://github.com/gpii/universal/LICENSE.txt
             },
             "nvda.speech.espeak.rateLabel": {messagekey: "nvda.speech.espeak.rateLabel"},
             "nvda.speech.espeak.rateBoost": "${prefs.http://registry\\.gpii\\.org/applications/org\\.nvda-project.0.value.speech.espeak.rateBoost}",
-            "nvda.speech.espeak.rateBoostLabel": {messagekey: "nvda.speech.espeak.rateBoostLabel"}
+            "nvda.speech.espeak.rateBoostLabel": {messagekey: "nvda.speech.espeak.rateBoostLabel"},
+            "nvda.reviewCursor.followFocus": "${prefs.http://registry\\.gpii\\.org/applications/org\\.nvda-project.0.value.reviewCursor.followFocus}",
+            "nvda.reviewCursor.followFocusLabel": {messagekey: "nvda.reviewCursor.followFocusLabel"},
+            "nvda.reviewCursor.followCaret": "${prefs.http://registry\\.gpii\\.org/applications/org\\.nvda-project.0.value.reviewCursor.followCaret}",
+            "nvda.reviewCursor.followCaretLabel": {messagekey: "nvda.reviewCursor.followCaretLabel"},
+            "nvda.reviewCursor.followMouse": "${prefs.http://registry\\.gpii\\.org/applications/org\\.nvda-project.0.value.reviewCursor.followMouse}",
+            "nvda.reviewCursor.followMouseLabel": {messagekey: "nvda.reviewCursor.followMouseLabel"},
+            "nvda.presentation.reportHelpBalloons": "${prefs.http://registry\\.gpii\\.org/applications/org\\.nvda-project.0.value.presentation.reportHelpBalloons}",
+            "nvda.presentation.reportHelpBalloonsLabel": {messagekey: "nvda.presentation.reportHelpBalloonsLabel"},
+            "nvda.keyboard.speakTypedCharacters": "${prefs.http://registry\\.gpii\\.org/applications/org\\.nvda-project.0.value.keyboard.speakTypedCharacters}",
+            "nvda.keyboard.speakTypedCharactersLabel": {messagekey: "nvda.keyboard.speakTypedCharactersLabel"},
+            "nvda.keyboard.speakTypedWords": "${prefs.http://registry\\.gpii\\.org/applications/org\\.nvda-project.0.value.keyboard.speakTypedWords}",
+            "nvda.keyboard.speakTypedWordsLabel": {messagekey: "nvda.keyboard.speakTypedWordsLabel"},
+            "nvda.speech.espeak.sayCapForCapitals": "${prefs.http://registry\\.gpii\\.org/applications/org\\.nvda-project.0.value.speech.espeak.sayCapForCapitals}",
+            "nvda.speech.espeak.sayCapForCapitalsLabel": {messagekey: "nvda.speech.espeak.sayCapForCapitalsLabel"}
         },
         events: {
             updatePrefs: null
