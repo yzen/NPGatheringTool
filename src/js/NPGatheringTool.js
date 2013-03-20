@@ -76,6 +76,10 @@ https://github.com/gpii/universal/LICENSE.txt
             "nvda.keyboard.speakTypedCharactersLabel": "Speak Typed Characters",
             "nvda.keyboard.speakTypedWordsLabel": "Speak Typed Words",
             "nvda.speech.espeak.sayCapForCapitalsLabel": "Say 'Cap' For Capitals",
+            "nvda.speech.symbolLevelLabel": "Symbol Level",
+            "nvda.virtualBuffers.autoSayAllOnPageLoadLabel": "Say All On Page Load",
+            "nvda.speech.synthLabel": "Speech Synth",
+            "nvda.speech.outputDeviceLabel": "Output Device",
             "desktop.highContrastOnLabel": "High Contrast",
             "desktop.cursorsLabel": "Cursor",
             "magnifier.MagnificationLabel": "Magnification",
@@ -154,6 +158,14 @@ https://github.com/gpii/universal/LICENSE.txt
             "nvda.keyboard.speakTypedWordsLabel": ".gpii-NPGatheringTool-nvda-keyboard-speakTypedWordsLabel",
             "nvda.speech.espeak.sayCapForCapitals": ".gpii-NPGatheringTool-nvda-speech-espeak-sayCapForCapitals",
             "nvda.speech.espeak.sayCapForCapitalsLabel": ".gpii-NPGatheringTool-nvda-speech-espeak-sayCapForCapitalsLabel",
+            "nvda.speech.symbolLevel": ".gpii-NPGatheringTool-nvda-speech-symbolLevel",
+            "nvda.speech.symbolLevelLabel": ".gpii-NPGatheringTool-nvda-speech-symbolLevelLabel",
+            "nvda.virtualBuffers.autoSayAllOnPageLoad": ".gpii-NPGatheringTool-nvda-virtualBuffers-autoSayAllOnPageLoad",
+            "nvda.virtualBuffers.autoSayAllOnPageLoadLabel": ".gpii-NPGatheringTool-nvda-virtualBuffers-autoSayAllOnPageLoadLabel",
+            "nvda.speech.synth": ".gpii-NPGatheringTool-nvda-speech-synth",
+            "nvda.speech.synthLabel": ".gpii-NPGatheringTool-nvda-speech-synthLabel",
+            "nvda.speech.outputDevice": ".gpii-NPGatheringTool-nvda-speech-outputDevice",
+            "nvda.speech.outputDeviceLabel": ".gpii-NPGatheringTool-nvda-speech-outputDeviceLabel",
             "desktop.highContrastOn": ".gpii-NPGatheringTool-desktop-highContrastOn",
             "desktop.highContrastOnLabel": ".gpii-NPGatheringTool-desktop-highContrastOnLabel",
             "desktop.cursors": ".gpii-NPGatheringTool-desktop-cursors",
@@ -422,10 +434,10 @@ https://github.com/gpii/universal/LICENSE.txt
                         "keyboard.speakTypedCharacters": false,
                         "keyboard.speakTypedWords": false,
                         "speech.espeak.sayCapForCapitals": false,
-                        "speech\\.symbolLevel": 0,
-                        "virtualBuffers\\.autoSayAllOnPageLoad": false,
-                        "speech\\.synth": null,
-                        "speech\\.outputDevice": null
+                        "speech.symbolLevel": 0,
+                        "virtualBuffers.autoSayAllOnPageLoad": false,
+                        "speech.synth": null,
+                        "speech.outputDevice": null
                     }
                 }],
                 "http://registry.gpii.org/applications/com.microsoft.windows.highContrast": [{
@@ -714,6 +726,27 @@ https://github.com/gpii/universal/LICENSE.txt
             "nvda.keyboard.speakTypedWordsLabel": {messagekey: "nvda.keyboard.speakTypedWordsLabel"},
             "nvda.speech.espeak.sayCapForCapitals": "${prefs.http://registry\\.gpii\\.org/applications/org\\.nvda-project.0.value.speech\\.espeak\\.sayCapForCapitals}",
             "nvda.speech.espeak.sayCapForCapitalsLabel": {messagekey: "nvda.speech.espeak.sayCapForCapitalsLabel"},
+            "nvda.speech.symbolLevel": {
+                decorators: {
+                    type: "fluid",
+                    func: "gpii.textfieldSlider",
+                    options: {
+                        elPath: "prefs.http://registry\\.gpii\\.org/applications/org\\.nvda-project.0.value.speech\\.symbolLevel",
+                        model: {
+                            min: 0,
+                            max: 300
+                        },
+                        sliderOptions: {
+                            step: 100
+                        }
+                    }
+                }
+            },
+            "nvda.speech.symbolLevelLabel": {messagekey: "nvda.speech.symbolLevelLabel"},
+            "nvda.virtualBuffers.autoSayAllOnPageLoad": "${prefs.http://registry\\.gpii\\.org/applications/org\\.nvda-project.0.value.virtualBuffers\\.autoSayAllOnPageLoad}",
+            "nvda.virtualBuffers.autoSayAllOnPageLoadLabel": {messagekey: "nvda.virtualBuffers.autoSayAllOnPageLoadLabel"},
+            "nvda.speech.synthLabel": {messagekey: "nvda.speech.synthLabel"},
+            "nvda.speech.outputDeviceLabel": {messagekey: "nvda.speech.outputDeviceLabel"},
             "desktop.highContrastOn": "${prefs.http://registry\\.gpii\\.org/applications/com\\.microsoft\\.windows\\.highContrast.0.value.highContrastOn.value}",
             "desktop.highContrastOnLabel": {messagekey: "desktop.highContrastOnLabel"},
             "desktop.cursors": {
