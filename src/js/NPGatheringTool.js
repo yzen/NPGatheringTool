@@ -76,6 +76,8 @@ https://github.com/gpii/universal/LICENSE.txt
             "nvda.keyboard.speakTypedCharactersLabel": "Speak Typed Characters",
             "nvda.keyboard.speakTypedWordsLabel": "Speak Typed Words",
             "nvda.speech.espeak.sayCapForCapitalsLabel": "Say 'Cap' For Capitals",
+            "desktop.highContrastOnLabel": "High Contrast",
+            "desktop.cursorsLabel": "Cursor",
             "magnifier.MagnificationLabel": "Magnification",
             "magnifier.FollowFocusLabel": "Follow Focus",
             "magnifier.FollowCaretLabel": "Follow Caret",
@@ -152,6 +154,10 @@ https://github.com/gpii/universal/LICENSE.txt
             "nvda.keyboard.speakTypedWordsLabel": ".gpii-NPGatheringTool-nvda-keyboard-speakTypedWordsLabel",
             "nvda.speech.espeak.sayCapForCapitals": ".gpii-NPGatheringTool-nvda-speech-espeak-sayCapForCapitals",
             "nvda.speech.espeak.sayCapForCapitalsLabel": ".gpii-NPGatheringTool-nvda-speech-espeak-sayCapForCapitalsLabel",
+            "desktop.highContrastOn": ".gpii-NPGatheringTool-desktop-highContrastOn",
+            "desktop.highContrastOnLabel": ".gpii-NPGatheringTool-desktop-highContrastOnLabel",
+            "desktop.cursors": ".gpii-NPGatheringTool-desktop-cursors",
+            "desktop.cursorsLabel": ".gpii-NPGatheringTool-desktop-cursorsLabel",
             "magnifier.Magnification": ".gpii-NPGatheringTool-magnifier-Magnification",
             "magnifier.MagnificationLabel": ".gpii-NPGatheringTool-magnifier-MagnificationLabel",
             "magnifier.FollowFocus": ".gpii-NPGatheringTool-magnifier-FollowFocus",
@@ -196,6 +202,174 @@ https://github.com/gpii/universal/LICENSE.txt
             "gtk-themeValues": ["HighContrast", "Adwaita"],
             "icon-themeValues": ["HighContrast", "gnome"],
             "screen-positionValues": ["full-screen", "left-half", "right-half", "top-half", "bottom-half"],
+            cursors: {
+                values: ["Normal", "Large", "Extra Large"],
+                selection: "Normal",
+                cursorValues: {
+                    Normal: {
+                        "No": {
+                            "value": "%SystemRoot%\\cursors\\aero_unavail.cur",
+                            "dataType": "REG_SZ"
+                        },
+                        "Hand": {
+                            "value": "%SystemRoot%\\cursors\\aero_link.cur",
+                            "dataType": "REG_SZ"
+                        },
+                        "Help": {
+                            "value": "%SystemRoot%\\cursors\\aero_helpsel.cur",
+                            "dataType": "REG_SZ"
+                        },
+                        "Wait": {
+                            "value": "%SystemRoot%\\cursors\\aero_busy.ani",
+                            "dataType": "REG_SZ"
+                        },
+                        "Arrow": {
+                            "value": "%SystemRoot%\\cursors\\aero_arrow.cur",
+                            "dataType": "REG_SZ"
+                        },
+                        "NWPen": {
+                            "value": "%SystemRoot%\\cursors\\aero_pen.cur",
+                            "dataType": "REG_SZ"
+                        },
+                        "SizeNS": {
+                            "value": "%SystemRoot%\\cursors\\aero_ns.cur",
+                            "dataType": "REG_SZ"
+                        },
+                        "SizeWE": {
+                            "value": "%SystemRoot%\\cursors\\aero_ew.cur",
+                            "dataType": "REG_SZ"
+                        },
+                        "SizeAll": {
+                            "value": "%SystemRoot%\\cursors\\aero_move.cur",
+                            "dataType": "REG_SZ"
+                        },
+                        "UpArrow": {
+                            "value": "%SystemRoot%\\cursors\\aero_up.cur",
+                            "dataType": "REG_SZ"
+                        },
+                        "SizeNESW": {
+                            "value": "%SystemRoot%\\cursors\\aero_nesw.cur",
+                            "dataType": "REG_SZ"
+                        },
+                        "SizeNWSE": {
+                            "value": "%SystemRoot%\\cursors\\aero_nwse.cur",
+                            "dataType": "REG_SZ"
+                        },
+                        "AppStarting": {
+                            "value": "%SystemRoot%\\cursors\\aero_working.ani",
+                            "dataType": "REG_SZ"
+                        }
+                    },
+                    Large: {
+                        "No": {
+                            "value": "%SystemRoot%\\cursors\\aero_unavail_l.cur",
+                            "dataType": "REG_SZ"
+                        },
+                        "Hand": {
+                            "value": "%SystemRoot%\\cursors\\aero_link_l.cur",
+                            "dataType": "REG_SZ"
+                        },
+                        "Help": {
+                            "value": "%SystemRoot%\\cursors\\aero_helpsel_l.cur",
+                            "dataType": "REG_SZ"
+                        },
+                        "Wait": {
+                            "value": "%SystemRoot%\\cursors\\aero_busy_l.ani",
+                            "dataType": "REG_SZ"
+                        },
+                        "Arrow": {
+                            "value": "%SystemRoot%\\cursors\\aero_arrow_l.cur",
+                            "dataType": "REG_SZ"
+                        },
+                        "NWPen": {
+                            "value": "%SystemRoot%\\cursors\\aero_pen_l.cur",
+                            "dataType": "REG_SZ"
+                        },
+                        "SizeNS": {
+                            "value": "%SystemRoot%\\cursors\\aero_ns_l.cur",
+                            "dataType": "REG_SZ"
+                        },
+                        "SizeWE": {
+                            "value": "%SystemRoot%\\cursors\\aero_ew_l.cur",
+                            "dataType": "REG_SZ"
+                        },
+                        "SizeAll": {
+                            "value": "%SystemRoot%\\cursors\\aero_move_l.cur",
+                            "dataType": "REG_SZ"
+                        },
+                        "UpArrow": {
+                            "value": "%SystemRoot%\\cursors\\aero_up_l.cur",
+                            "dataType": "REG_SZ"
+                        },
+                        "SizeNESW": {
+                            "value": "%SystemRoot%\\cursors\\aero_nesw_l.cur",
+                            "dataType": "REG_SZ"
+                        },
+                        "SizeNWSE": {
+                            "value": "%SystemRoot%\\cursors\\aero_nwse_l.cur",
+                            "dataType": "REG_SZ"
+                        },
+                        "AppStarting": {
+                            "value": "%SystemRoot%\\cursors\\aero_working_l.ani",
+                            "dataType": "REG_SZ"
+                        }
+                    },
+                    "Extra Large": {
+                        "No": {
+                              "value": "%SystemRoot%\\cursors\\aero_unavail_xl.cur",
+                            "dataType": "REG_SZ"
+                        },
+                        "Hand": {
+                            "value": "%SystemRoot%\\cursors\\aero_link_xl.cur",
+                            "dataType": "REG_SZ"
+                        },
+                        "Help": {
+                            "value": "%SystemRoot%\\cursors\\aero_helpsel_xl.cur",
+                            "dataType": "REG_SZ"
+                        },
+                        "Wait": {
+                            "value": "%SystemRoot%\\cursors\\aero_busy_xl.ani",
+                            "dataType": "REG_SZ"
+                        },
+                        "Arrow": {
+                            "value": "%SystemRoot%\\cursors\\aero_arrow_xl.cur",
+                            "dataType": "REG_SZ"
+                        },
+                        "NWPen": {
+                            "value": "%SystemRoot%\\cursors\\aero_pen_xl.cur",
+                            "dataType": "REG_SZ"
+                        },
+                        "SizeNS": {
+                            "value": "%SystemRoot%\\cursors\\aero_ns_xl.cur",
+                            "dataType": "REG_SZ"
+                        },
+                        "SizeWE": {
+                            "value": "%SystemRoot%\\cursors\\aero_ew_xl.cur",
+                            "dataType": "REG_SZ"
+                        },
+                        "SizeAll": {
+                            "value": "%SystemRoot%\\cursors\\aero_move_xl.cur",
+                            "dataType": "REG_SZ"
+                        },
+                        "UpArrow": {
+                            "value": "%SystemRoot%\\cursors\\aero_up_xl.cur",
+                            "dataType": "REG_SZ"
+                        },
+                        "SizeNESW": {
+                            "value": "%SystemRoot%\\cursors\\aero_nesw_xl.cur",
+                            "dataType": "REG_SZ"
+                        },
+                        "SizeNWSE": {
+                            "value": "%SystemRoot%\\cursors\\aero_nwse_xl.cur",
+                            "dataType": "REG_SZ"
+                        },
+                        "AppStarting": {
+                            "value": "%SystemRoot%\\cursors\\aero_working_xl.ani",
+                            "dataType": "REG_SZ"
+                        }
+                    }
+                }
+            },
             prefs: {
                 // LINUX
                 "http://registry.gpii.org/applications/org.gnome.orca.voice.default": [{
@@ -254,18 +428,92 @@ https://github.com/gpii/universal/LICENSE.txt
                         "speech\\.outputDevice": null
                     }
                 }],
+                "http://registry.gpii.org/applications/com.microsoft.windows.highContrast": [{
+                    value: {
+                        highContrastOn: {
+                            path: "pvParam.dwFlags.HCF_HIGHCONTRASTON",
+                            value: false
+                        }
+                    }
+                }],
                 "http://registry.gpii.org/applications/com.microsoft.windows.cursors": [{
                     value: {
-                        // TODO
+                        "No": {
+                            "value": "%SystemRoot%\\cursors\\aero_unavail.cur",
+                            "dataType": "REG_SZ"
+                        },
+                        "Hand": {
+                            "value": "%SystemRoot%\\cursors\\aero_link.cur",
+                            "dataType": "REG_SZ"
+                        },
+                        "Help": {
+                            "value": "%SystemRoot%\\cursors\\aero_helpsel.cur",
+                            "dataType": "REG_SZ"
+                        },
+                        "Wait": {
+                            "value": "%SystemRoot%\\cursors\\aero_busy.ani",
+                            "dataType": "REG_SZ"
+                        },
+                        "Arrow": {
+                            "value": "%SystemRoot%\\cursors\\aero_arrow.cur",
+                            "dataType": "REG_SZ"
+                        },
+                        "NWPen": {
+                            "value": "%SystemRoot%\\cursors\\aero_pen.cur",
+                            "dataType": "REG_SZ"
+                        },
+                        "SizeNS": {
+                            "value": "%SystemRoot%\\cursors\\aero_ns.cur",
+                            "dataType": "REG_SZ"
+                        },
+                        "SizeWE": {
+                            "value": "%SystemRoot%\\cursors\\aero_ew.cur",
+                            "dataType": "REG_SZ"
+                        },
+                        "SizeAll": {
+                            "value": "%SystemRoot%\\cursors\\aero_move.cur",
+                            "dataType": "REG_SZ"
+                        },
+                        "UpArrow": {
+                            "value": "%SystemRoot%\\cursors\\aero_up.cur",
+                            "dataType": "REG_SZ"
+                        },
+                        "SizeNESW": {
+                            "value": "%SystemRoot%\\cursors\\aero_nesw.cur",
+                            "dataType": "REG_SZ"
+                        },
+                        "SizeNWSE": {
+                            "value": "%SystemRoot%\\cursors\\aero_nwse.cur",
+                            "dataType": "REG_SZ"
+                        },
+                        "AppStarting": {
+                            "value": "%SystemRoot%\\cursors\\aero_working.ani",
+                            "dataType": "REG_SZ"
+                        }
                     }
                 }],
                 "http://registry.gpii.org/applications/com.microsoft.windows.magnifier": [{
                     value: {
-                        "Magnification": 100,
-                        "FollowFocus": 0,
-                        "FollowCaret": 0,
-                        "FollowMouse": 0,
-                        "MagnificationMode": 1
+                        Magnification: {
+                            value: 100,
+                            dataType: "REG_DWORD"
+                        },
+                        FollowFocus: {
+                            value: 0,
+                            dataType: "REG_DWORD"
+                        },
+                        FollowCaret: {
+                            value: 0,
+                            dataType: "REG_DWORD"
+                        },
+                        FollowMouse: {
+                            value: 0,
+                            dataType: "REG_DWORD"
+                        },
+                        MagnificationMode: {
+                            value: 1,
+                            dataType: "REG_DWORD"
+                        }
                     }
                 }]
             }
@@ -466,18 +714,23 @@ https://github.com/gpii/universal/LICENSE.txt
             "nvda.keyboard.speakTypedWordsLabel": {messagekey: "nvda.keyboard.speakTypedWordsLabel"},
             "nvda.speech.espeak.sayCapForCapitals": "${prefs.http://registry\\.gpii\\.org/applications/org\\.nvda-project.0.value.speech\\.espeak\\.sayCapForCapitals}",
             "nvda.speech.espeak.sayCapForCapitalsLabel": {messagekey: "nvda.speech.espeak.sayCapForCapitalsLabel"},
+            "desktop.highContrastOn": "${prefs.http://registry\\.gpii\\.org/applications/com\\.microsoft\\.windows\\.highContrast.0.value.highContrastOn.value}",
+            "desktop.highContrastOnLabel": {messagekey: "desktop.highContrastOnLabel"},
+            "desktop.cursors": {
+                optionnames: "${cursors.values}",
+                optionlist: "${cursors.values}",
+                selection: "${cursors.selection}"
+            },
+            "desktop.cursorsLabel": {messagekey: "desktop.cursorsLabel"},
             "magnifier.Magnification": {
                 decorators: {
                     type: "fluid",
                     func: "gpii.textfieldSlider",
                     options: {
-                        elPath: "prefs.http://registry\\.gpii\\.org/applications/com\\.microsoft\\.windows\\.magnifier.0.value.Magnification",
+                        elPath: "prefs.http://registry\\.gpii\\.org/applications/com\\.microsoft\\.windows\\.magnifier.0.value.Magnification.value",
                         model: {
                             min: 100,
                             max: 400
-                        },
-                        sliderOptions: {
-                            step: 100
                         }
                     }
                 }
@@ -488,7 +741,7 @@ https://github.com/gpii/universal/LICENSE.txt
                     type: "fluid",
                     func: "gpii.textfieldSlider",
                     options: {
-                        elPath: "prefs.http://registry\\.gpii\\.org/applications/com\\.microsoft\\.windows\\.magnifier.0.value.FollowFocus",
+                        elPath: "prefs.http://registry\\.gpii\\.org/applications/com\\.microsoft\\.windows\\.magnifier.0.value.FollowFocus.value",
                         model: {
                             min: 0,
                             max: 1
@@ -502,7 +755,7 @@ https://github.com/gpii/universal/LICENSE.txt
                     type: "fluid",
                     func: "gpii.textfieldSlider",
                     options: {
-                        elPath: "prefs.http://registry\\.gpii\\.org/applications/com\\.microsoft\\.windows\\.magnifier.0.value.FollowCaret",
+                        elPath: "prefs.http://registry\\.gpii\\.org/applications/com\\.microsoft\\.windows\\.magnifier.0.value.FollowCaret.value",
                         model: {
                             min: 0,
                             max: 1
@@ -516,7 +769,7 @@ https://github.com/gpii/universal/LICENSE.txt
                     type: "fluid",
                     func: "gpii.textfieldSlider",
                     options: {
-                        elPath: "prefs.http://registry\\.gpii\\.org/applications/com\\.microsoft\\.windows\\.magnifier.0.value.FollowMouse",
+                        elPath: "prefs.http://registry\\.gpii\\.org/applications/com\\.microsoft\\.windows\\.magnifier.0.value.FollowMouse.value",
                         model: {
                             min: 0,
                             max: 1
@@ -530,7 +783,7 @@ https://github.com/gpii/universal/LICENSE.txt
                     type: "fluid",
                     func: "gpii.textfieldSlider",
                     options: {
-                        elPath: "prefs.http://registry\\.gpii\\.org/applications/com\\.microsoft\\.windows\\.magnifier.0.value.MagnificationMode",
+                        elPath: "prefs.http://registry\\.gpii\\.org/applications/com\\.microsoft\\.windows\\.magnifier.0.value.MagnificationMode.value",
                         model: {
                             min: 1,
                             max: 3
@@ -573,6 +826,14 @@ https://github.com/gpii/universal/LICENSE.txt
         resolverGetConfig: gpii.NPGatheringTool.resolverGetConfig,
         resolverSetConfig: gpii.NPGatheringTool.resolverSetConfig
     });
+
+    gpii.NPGatheringTool.finalInit = function (that) {
+        that.applier.modelChanged.addListener("cursors.selection", function (model) {
+            that.applier.requestChange(
+                "prefs.http://registry\\.gpii\\.org/applications/com\\.microsoft\\.windows\\.cursors.0.value",
+                that.model.cursors.cursorValues[model.cursors.selection]);
+        });
+    };
 
     gpii.NPGatheringTool.updatePrefs = function (applier, model, refreshView) {
         applier.requestChange("token", model.token);
