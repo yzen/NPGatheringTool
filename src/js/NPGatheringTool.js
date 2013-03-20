@@ -48,6 +48,7 @@ https://github.com/gpii/universal/LICENSE.txt
             desktopGroupLabel: "Desktop",
             a11yGroupLabel: "Accessibility",
             nvdaGroupLabel: "NVDA",
+            magnifierGroupLabel: "Magnification",
             "orca.voice.default.familyLabel": "Voice Default Family",
             "orca.voice.default.rateLabel": "Voice Default Rate",
             "orca.enableTutorialMessagesLabel": "Enable Tutorial Messages",
@@ -67,8 +68,12 @@ https://github.com/gpii/universal/LICENSE.txt
             "desktop.show-cross-hairsLabel": "Show Cross Hairs",
             "nvda.speech.espeak.voiceLabel": "Voice",
             "nvda.speech.espeak.rateLabel": "Rate",
-            "nvda.speech.espeak.rateBoostLabel": "Rate Boost"
-            
+            "nvda.speech.espeak.rateBoostLabel": "Rate Boost",
+            "magnifier.MagnificationLabel": "Magnification",
+            "magnifier.FollowFocusLabel": "Follow Focus",
+            "magnifier.FollowCaretLabel": "Follow Caret",
+            "magnifier.FollowMouseLabel": "Follow Mouse",
+            "magnifier.MagnificationModeLabel": "Magnification Mode"
         },
         selectors: {
             save: ".gpii-NPGatheringTool-save",
@@ -83,6 +88,7 @@ https://github.com/gpii/universal/LICENSE.txt
             a11yGroupLabel: ".gpii-NPGatheringTool-a11yGroupLabel",
             windowsGroupLabel: ".gpii-NPGatheringTool-windowsGroupLabel",
             nvdaGroupLabel: ".gpii-NPGatheringTool-nvdaGroupLabel",
+            magnifierGroupLabel: ".gpii-NPGatheringTool-magnifierGroupLabel",
 
             "orca.voice.default.family": ".gpii-NPGatheringTool-orca-voice-default-family",
             "orca.voice.default.familyLabel": ".gpii-NPGatheringTool-orca-voice-default-familyLabel",
@@ -124,8 +130,17 @@ https://github.com/gpii/universal/LICENSE.txt
             "nvda.speech.espeak.rate": ".gpii-NPGatheringTool-nvda-speech-espeak-rate",
             "nvda.speech.espeak.rateLabel": ".gpii-NPGatheringTool-nvda-speech-espeak-rateLabel",
             "nvda.speech.espeak.rateBoost": ".gpii-NPGatheringTool-nvda-speech-espeak-rateBoost",
-            "nvda.speech.espeak.rateBoostLabel": ".gpii-NPGatheringTool-nvda-speech-espeak-rateBoostLabel"
-            
+            "nvda.speech.espeak.rateBoostLabel": ".gpii-NPGatheringTool-nvda-speech-espeak-rateBoostLabel",
+            "magnifier.Magnification": ".gpii-NPGatheringTool-magnifier-Magnification",
+            "magnifier.MagnificationLabel": ".gpii-NPGatheringTool-magnifier-MagnificationLabel",
+            "magnifier.FollowFocus": ".gpii-NPGatheringTool-magnifier-FollowFocus",
+            "magnifier.FollowFocusLabel": ".gpii-NPGatheringTool-magnifier-FollowFocusLabel",
+            "magnifier.FollowCaret": ".gpii-NPGatheringTool-magnifier-FollowCaret",
+            "magnifier.FollowCaretLabel": ".gpii-NPGatheringTool-magnifier-FollowCaretLabel",
+            "magnifier.FollowMouse": ".gpii-NPGatheringTool-magnifier-FollowMouse",
+            "magnifier.FollowMouseLabel": ".gpii-NPGatheringTool-magnifier-FollowMouseLabel",
+            "magnifier.MagnificationMode": ".gpii-NPGatheringTool-magnifier-MagnificationMode",
+            "magnifier.MagnificationModeLabel": ".gpii-NPGatheringTool-magnifier-MagnificationModeLabel"
         },
         model: {
             token: "",
@@ -229,7 +244,7 @@ https://github.com/gpii/universal/LICENSE.txt
                         "FollowFocus": 0,
                         "FollowCaret": 0,
                         "FollowMouse": 0,
-                        "MagnificationPosition": 1
+                        "MagnificationMode": 1
                     }
                 }]
             }
@@ -262,6 +277,9 @@ https://github.com/gpii/universal/LICENSE.txt
             },
             nvdaGroupLabel: {
                 messagekey: "nvdaGroupLabel"
+            },
+            magnifierGroupLabel: {
+                messagekey: "magnifierGroupLabel"
             },
             "orca.voice.default.family": {
                 optionnames: "${voicesDefaultFamilyNames}",
@@ -412,7 +430,80 @@ https://github.com/gpii/universal/LICENSE.txt
             },
             "nvda.speech.espeak.rateLabel": {messagekey: "nvda.speech.espeak.rateLabel"},
             "nvda.speech.espeak.rateBoost": "${prefs.http://registry\\.gpii\\.org/applications/org\\.nvda-project.0.value.speech\\.espeak\\.rateBoost}",
-            "nvda.speech.espeak.rateBoostLabel": {messagekey: "nvda.speech.espeak.rateBoostLabel"}
+            "nvda.speech.espeak.rateBoostLabel": {messagekey: "nvda.speech.espeak.rateBoostLabel"},
+            "magnifier.Magnification": {
+                decorators: {
+                    type: "fluid",
+                    func: "gpii.textfieldSlider",
+                    options: {
+                        elPath: "prefs.http://registry\\.gpii\\.org/applications/com\\.microsoft\\.windows\\.magnifier.0.value.Magnification",
+                        model: {
+                            min: 100,
+                            max: 400
+                        },
+                        sliderOptions: {
+                            step: 100
+                        }
+                    }
+                }
+            },
+            "magnifier.MagnificationLabel": {messagekey: "magnifier.MagnificationLabel"},
+            "magnifier.FollowFocus": {
+                decorators: {
+                    type: "fluid",
+                    func: "gpii.textfieldSlider",
+                    options: {
+                        elPath: "prefs.http://registry\\.gpii\\.org/applications/com\\.microsoft\\.windows\\.magnifier.0.value.FollowFocus",
+                        model: {
+                            min: 0,
+                            max: 1
+                        }
+                    }
+                }
+            },
+            "magnifier.FollowFocusLabel": {messagekey: "magnifier.FollowFocusLabel"},
+            "magnifier.FollowCaret": {
+                decorators: {
+                    type: "fluid",
+                    func: "gpii.textfieldSlider",
+                    options: {
+                        elPath: "prefs.http://registry\\.gpii\\.org/applications/com\\.microsoft\\.windows\\.magnifier.0.value.FollowCaret",
+                        model: {
+                            min: 0,
+                            max: 1
+                        }
+                    }
+                }
+            },
+            "magnifier.FollowCaretLabel": {messagekey: "magnifier.FollowCaretLabel"},
+            "magnifier.FollowMouse": {
+                decorators: {
+                    type: "fluid",
+                    func: "gpii.textfieldSlider",
+                    options: {
+                        elPath: "prefs.http://registry\\.gpii\\.org/applications/com\\.microsoft\\.windows\\.magnifier.0.value.FollowMouse",
+                        model: {
+                            min: 0,
+                            max: 1
+                        }
+                    }
+                }
+            },
+            "magnifier.FollowMouseLabel": {messagekey: "magnifier.FollowMouseLabel"},
+            "magnifier.MagnificationMode": {
+                decorators: {
+                    type: "fluid",
+                    func: "gpii.textfieldSlider",
+                    options: {
+                        elPath: "prefs.http://registry\\.gpii\\.org/applications/com\\.microsoft\\.windows\\.magnifier.0.value.MagnificationMode",
+                        model: {
+                            min: 1,
+                            max: 3
+                        }
+                    }
+                }
+            },
+            "magnifier.MagnificationModeLabel": {messagekey: "magnifier.MagnificationModeLabel"}
         },
         events: {
             updatePrefs: null

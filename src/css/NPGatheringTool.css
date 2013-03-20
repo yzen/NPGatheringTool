@@ -35,10 +35,13 @@ label {
 .gpii-slider-small .ui-slider.ui-slider-horizontal {
     width: 30px;
 }
-.gpii-slider-small div, .gpii-slider div {
+.gpii-slider-medium .ui-slider.ui-slider-horizontal {
+    width: 60px;
+}
+.gpii-slider-medium div, .gpii-slider-small div, .gpii-slider div {
     display: inline-block;
 }
-.gpii-slider-small input[type="text"], .gpii-slider input[type="text"] {
+.gpii-slider-medium input[type="text"], .gpii-slider-small input[type="text"], .gpii-slider input[type="text"] {
     width: 40px;
     margin-left: 10px;
 }
