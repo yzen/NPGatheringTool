@@ -413,7 +413,7 @@ https://github.com/gpii/universal/LICENSE.txt
             "nvda.speech.espeak.voice": {
                 optionnames: "${speechEspeakVoiceNames}",
                 optionlist: "${speechEspeakVoiceValues}",
-                selection: "${prefs.http://registry\\.gpii\\.org/applications/org\\.nvda-project.0.value.speech\\.espeak\\.rate}"
+                selection: "${prefs.http://registry\\.gpii\\.org/applications/org\\.nvda-project.0.value.speech\\.espeak\\.voice}"
             },
             "nvda.speech.espeak.voiceLabel": {
                 messagekey: "nvda.speech.espeak.voiceLabel"
