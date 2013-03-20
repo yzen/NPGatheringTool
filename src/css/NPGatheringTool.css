@@ -38,7 +38,7 @@ label {
 .gpii-slider-small div, .gpii-slider div {
     display: inline-block;
 }
-.gpii-slider-small #min-text-size, .gpii-slider #min-text-size {
+.gpii-slider-small input[type="text"], .gpii-slider input[type="text"] {
     width: 40px;
     margin-left: 10px;
 }

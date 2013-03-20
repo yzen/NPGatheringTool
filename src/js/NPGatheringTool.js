@@ -438,7 +438,8 @@ https://github.com/gpii/universal/LICENSE.txt
     });
 
     gpii.NPGatheringTool.updatePrefs = function (applier, model, refreshView) {
-        applier.requestChange("", model);
+        applier.requestChange("token", model.token);
+        applier.requestChange("prefs", model.prefs);
         refreshView();
     };
 
