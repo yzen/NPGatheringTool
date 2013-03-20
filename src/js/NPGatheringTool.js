@@ -214,6 +214,10 @@ https://github.com/gpii/universal/LICENSE.txt
             "gtk-themeValues": ["HighContrast", "Adwaita"],
             "icon-themeValues": ["HighContrast", "gnome"],
             "screen-positionValues": ["full-screen", "left-half", "right-half", "top-half", "bottom-half"],
+            speechSynthNames: ["Disabled", "Enabled"],
+            speechSynthValues: ["silence", "none"],
+            outputDeviceNames: ["Disabled", "Enabled"],
+            outputDeviceValues: ["none", "Microsoft Sound Mapper"],
             cursors: {
                 values: ["Normal", "Large", "Extra Large"],
                 selection: "Normal",
@@ -436,8 +440,8 @@ https://github.com/gpii/universal/LICENSE.txt
                         "speech.espeak.sayCapForCapitals": false,
                         "speech.symbolLevel": 0,
                         "virtualBuffers.autoSayAllOnPageLoad": false,
-                        "speech.synth": null,
-                        "speech.outputDevice": null
+                        "speech.synth": "silence",
+                        "speech.outputDevice": "none"
                     }
                 }],
                 "http://registry.gpii.org/applications/com.microsoft.windows.highContrast": [{
@@ -745,7 +749,17 @@ https://github.com/gpii/universal/LICENSE.txt
             "nvda.speech.symbolLevelLabel": {messagekey: "nvda.speech.symbolLevelLabel"},
             "nvda.virtualBuffers.autoSayAllOnPageLoad": "${prefs.http://registry\\.gpii\\.org/applications/org\\.nvda-project.0.value.virtualBuffers\\.autoSayAllOnPageLoad}",
             "nvda.virtualBuffers.autoSayAllOnPageLoadLabel": {messagekey: "nvda.virtualBuffers.autoSayAllOnPageLoadLabel"},
+            "nvda.speech.synth": {
+                optionnames: "${speechSynthNames}",
+                optionlist: "${speechSynthValues}",
+                selection: "${prefs.http://registry\\.gpii\\.org/applications/org\\.nvda-project.0.value.speech\\.synth}"
+            },
             "nvda.speech.synthLabel": {messagekey: "nvda.speech.synthLabel"},
+            "nvda.speech.outputDevice": {
+                optionnames: "${outputDeviceNames}",
+                optionlist: "${outputDeviceValues}",
+                selection: "${prefs.http://registry\\.gpii\\.org/applications/org\\.nvda-project.0.value.speech\\.outputDevice}"
+            },
             "nvda.speech.outputDeviceLabel": {messagekey: "nvda.speech.outputDeviceLabel"},
             "desktop.highContrastOn": "${prefs.http://registry\\.gpii\\.org/applications/com\\.microsoft\\.windows\\.highContrast.0.value.highContrastOn.value}",
             "desktop.highContrastOnLabel": {messagekey: "desktop.highContrastOnLabel"},
