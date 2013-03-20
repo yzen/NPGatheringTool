@@ -17,3 +17,9 @@ Usage
 To deploy the NPGatheringTool just, use the following command:
 
     ./bin/NPGatheringTool
+
+Notes
+-----
+
+Currently because of the gpii universal limitation updating preferences sets is not available.
+If you want to update a preference set, please create a new one.
