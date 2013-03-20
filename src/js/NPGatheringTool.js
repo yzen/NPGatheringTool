@@ -45,6 +45,7 @@ https://github.com/gpii/universal/LICENSE.txt
             linuxGroupLabel: "Linux",
             windowsGroupLabel: "Windows",
             orcaGroupLabel: "Orca",
+            desktopGroupLabel: "Desktop",
             nvdaGroupLabel: "NVDA",
             "orca.voice.default.familyLabel": "Voice Default Family",
             "orca.voice.default.rateLabel": "Voice Default Rate",
@@ -53,7 +54,13 @@ https://github.com/gpii/universal/LICENSE.txt
             "orca.enableEchoByWordLabel": "Enable Echo by Word",
             "orca.enableBrailleLabel": "Enable Braille",
             "orca.verbalizePunctuationStyleLabel": "Verbalize Punctuation Style",
-            "nvda.speech.espeak.rateBoostLabel": "Rate Boost" 
+            "orca.sayAllStyleLabel": "Say All Style",
+            "orca.enableSpeechLabel": "Enable Speech",
+            "desktop.gtk-themeLabel": "GTK Theme",
+            "desktop.icon-themeLabel": "Icon Theme",
+            "desktop.text-scaling-factorLabel": "Text Scaling Factor",
+            "desktop.cursor-sizeLabel": "Cursor Size",
+            "nvda.speech.espeak.rateBoostLabel": "Rate Boost"
             
         },
         selectors: {
@@ -65,6 +72,7 @@ https://github.com/gpii/universal/LICENSE.txt
             label: ".gpii-NPGatheringTool-label",
             linuxGroupLabel: ".gpii-NPGatheringTool-linuxGroupLabel",
             orcaGroupLabel: ".gpii-NPGatheringTool-orcaGroupLabel",
+            desktopGroupLabel: ".gpii-NPGatheringTool-desktopGroupLabel",
             windowsGroupLabel: ".gpii-NPGatheringTool-windowsGroupLabel",
             nvdaGroupLabel: ".gpii-NPGatheringTool-nvdaGroupLabel",
 
@@ -82,7 +90,19 @@ https://github.com/gpii/universal/LICENSE.txt
             "orca.enableBrailleLabel": ".gpii-NPGatheringTool-orca-enableBrailleLabel",
             "orca.verbalizePunctuationStyle": ".gpii-NPGatheringTool-orca-verbalizePunctuationStyle",
             "orca.verbalizePunctuationStyleLabel": ".gpii-NPGatheringTool-orca-verbalizePunctuationStyleLabel",
-            
+            "orca.sayAllStyle": ".gpii-NPGatheringTool-orca-sayAllStyle",
+            "orca.sayAllStyleLabel": ".gpii-NPGatheringTool-orca-sayAllStyleLabel",
+            "orca.enableSpeech": ".gpii-NPGatheringTool-orca-enableSpeech",
+            "orca.enableSpeechLabel": ".gpii-NPGatheringTool-orca-enableSpeechLabel",
+            "desktop.gtk-theme": ".gpii-NPGatheringTool-desktop-gtk-theme",
+            "desktop.gtk-themeLabel": ".gpii-NPGatheringTool-desktop-gtk-themeLabel",
+            "desktop.icon-theme": ".gpii-NPGatheringTool-desktop-icon-theme",
+            "desktop.icon-themeLabel": ".gpii-NPGatheringTool-desktop-icon-themeLabel",
+            "desktop.text-scaling-factor": ".gpii-NPGatheringTool-desktop-text-scaling-factor",
+            "desktop.text-scaling-factorLabel": ".gpii-NPGatheringTool-desktop-text-scaling-factorLabel",
+            "desktop.cursor-size": ".gpii-NPGatheringTool-desktop-cursor-size",
+            "desktop.cursor-sizeLabel": ".gpii-NPGatheringTool-desktop-cursor-sizeLabel",
+
             "nvda.speech.espeak.rateBoostLabel": ".gpii-NPGatheringTool-nvda-speech-espeak-rateBoostLabel",
             "nvda.speech.espeak.rateBoost": ".gpii-NPGatheringTool-nvda-speech-espeak-rateBoost" 
             
@@ -102,6 +122,8 @@ https://github.com/gpii/universal/LICENSE.txt
                 "de", "el", "grc", "eo", "es", "es", "et", "fi", "fr", "fr", "hi", "hr", "hu", "hy", "hy",
                 "id", "is", "it", "jbo", "ka", "kn", "ku", "la", "lv", "mk", "ml", "nl", "no", "pap", "pl",
                 "pt", "pt", "ro", "ru", "sk", "sq", "sr", "sv", "sw", "ta", "tr", "vi", "zh", "zh"],
+            "gtk-themeValues": ["HighContrast", "Adwaita"],
+            "icon-themeValues": ["HighContrast", "gnome"],
             prefs: {
                 // LINUX
                 "http://registry.gpii.org/applications/org.gnome.orca.voice.default": [{
@@ -117,7 +139,16 @@ https://github.com/gpii/universal/LICENSE.txt
                         enableEchoByWord: false,
                         enableBraille: false,
                         verbalizePunctuationStyle: 0,
-                        sayAllStyle: 0
+                        sayAllStyle: 0,
+                        enableSpeech: false
+                    }
+                }],
+                "http://registry.gpii.org/applications/org.gnome.desktop.interface": [{
+                    value: {
+                        "gtk-theme": "HighContrast",
+                        "icon-theme": "HighContrast",
+                        "text-scaling-factor": 0.5,
+                        "cursor-size": 1
                     }
                 }],
                 "http://registry.gpii.org/applications/org.gnome.desktop.a11y.applications": [{
@@ -187,6 +218,9 @@ https://github.com/gpii/universal/LICENSE.txt
             orcaGroupLabel: {
                 messagekey: "orcaGroupLabel"
             },
+            desktopGroupLabel: {
+                messagekey: "desktopGroupLabel"
+            },
             nvdaGroupLabel: {
                 messagekey: "nvdaGroupLabel"
             },
@@ -232,6 +266,65 @@ https://github.com/gpii/universal/LICENSE.txt
                 }
             },
             "orca.verbalizePunctuationStyleLabel": {messagekey: "orca.verbalizePunctuationStyleLabel"},
+            "orca.sayAllStyle": {
+                decorators: {
+                    type: "fluid",
+                    func: "gpii.textfieldSlider",
+                    options: {
+                        elPath: "prefs.http://registry\\.gpii\\.org/applications/org\\.gnome\\.orca.0.value.sayAllStyle",
+                        model: {
+                            min: 0,
+                            max: 1
+                        }
+                    }
+                }
+            },
+            "orca.sayAllStyleLabel": {messagekey: "orca.sayAllStyleLabel"},
+            "orca.enableSpeech": "${prefs.http://registry\\.gpii\\.org/applications/org\\.gnome\\.orca.0.value.enableSpeech}",
+            "orca.enableSpeechLabel": {messagekey: "orca.enableSpeechLabel"},
+            "desktop.gtk-theme": {
+                optionnames: "${gtk-themeValues}",
+                optionlist: "${gtk-themeValues}",
+                selection: "${prefs.http://registry\\.gpii\\.org/applications/org\\.gnome\\.desktop\\.interface.0.value.gtk-theme}"
+            },
+            "desktop.gtk-themeLabel": {messagekey: "desktop.gtk-themeLabel"},
+            "desktop.icon-theme": {
+                optionnames: "${icon-themeValues}",
+                optionlist: "${icon-themeValues}",
+                selection: "${prefs.http://registry\\.gpii\\.org/applications/org\\.gnome\\.desktop\\.interface.0.value.icon-theme}"
+            },
+            "desktop.icon-themeLabel": {messagekey: "desktop.icon-themeLabel"},
+            "desktop.text-scaling-factor": {
+                decorators: {
+                    type: "fluid",
+                    func: "gpii.textfieldSlider",
+                    options: {
+                        elPath: "prefs.http://registry\\.gpii\\.org/applications/org\\.gnome\\.desktop\\.interface.0.value.text-scaling-factor",
+                        model: {
+                            min: 0.5,
+                            max: 3
+                        },
+                        sliderOptions: {
+                            step: 0.5
+                        }
+                    }
+                }
+            },
+            "desktop.text-scaling-factorLabel": {messagekey: "desktop.text-scaling-factorLabel"},
+            "desktop.cursor-size": {
+                decorators: {
+                    type: "fluid",
+                    func: "gpii.textfieldSlider",
+                    options: {
+                        elPath: "prefs.http://registry\\.gpii\\.org/applications/org\\.gnome\\.desktop\\.interface.0.value.cursor-size",
+                        model: {
+                            min: 1,
+                            max: 100
+                        }
+                    }
+                }
+            },
+            "desktop.cursor-sizeLabel": {messagekey: "desktop.cursor-sizeLabel"},
             "nvda.speech\\.espeak\\.rateBoost": "${prefs.http://registry\\.gpii\\.org/applications/org\\.nvda-project.0.value.speech\\.espeak\\.rateBoost}"
         },
         events: {
