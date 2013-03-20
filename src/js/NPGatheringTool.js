@@ -65,6 +65,7 @@ https://github.com/gpii/universal/LICENSE.txt
             "desktop.mag-factorLabel": "Magnification Factor",
             "desktop.screen-positionLabel": "Screen Position",
             "desktop.show-cross-hairsLabel": "Show Cross Hairs",
+            "nvda.speech.espeak.voiceLabel": "Voice",
             "nvda.speech.espeak.rateLabel": "Rate",
             "nvda.speech.espeak.rateBoostLabel": "Rate Boost",
             "nvda.reviewCursor.followFocusLabel": "Follow Focus",
@@ -125,6 +126,8 @@ https://github.com/gpii/universal/LICENSE.txt
             "desktop.show-cross-hairs": ".gpii-NPGatheringTool-desktop-show-cross-hairs",
             "desktop.show-cross-hairsLabel": ".gpii-NPGatheringTool-desktop-show-cross-hairsLabel",
 
+            "nvda.speech.espeak.voice": ".gpii-NPGatheringTool-nvda-speech-espeak-voice",
+            "nvda.speech.espeak.voiceLabel": ".gpii-NPGatheringTool-nvda-speech-espeak-voiceLabel",
             "nvda.speech.espeak.rate": ".gpii-NPGatheringTool-nvda-speech-espeak-rate",
             "nvda.speech.espeak.rateLabel": ".gpii-NPGatheringTool-nvda-speech-espeak-rateLabel",
             "nvda.speech.espeak.rateBoost": ".gpii-NPGatheringTool-nvda-speech-espeak-rateBoost",
@@ -160,7 +163,7 @@ https://github.com/gpii/universal/LICENSE.txt
                 "de", "el", "grc", "eo", "es", "es", "et", "fi", "fr", "fr", "hi", "hr", "hu", "hy", "hy",
                 "id", "is", "it", "jbo", "ka", "kn", "ku", "la", "lv", "mk", "ml", "nl", "no", "pap", "pl",
                 "pt", "pt", "ro", "ru", "sk", "sq", "sr", "sv", "sw", "ta", "tr", "vi", "zh", "zh"],
-            AuditoryOutLanguageNames: ["english", "english-gb", "english-us", "english-scotland",
+            speechEspeakVoiceNames: ["english", "english-gb", "english-us", "english-scotland",
                 "english-belize", "english-bs", "english-ag", "english-ai", "afrikaans", "bulgarian",
                 "bosnian", "catalan", "czech", "welsh-test", "danish", "german", "greek", "greek-ancient",
                 "esperanto", "spanish", "spanish-spain", "spanish-latin-american", "estonian", "finnish",
@@ -169,7 +172,7 @@ https://github.com/gpii/universal/LICENSE.txt
                 "kurdish", "latin", "latvian", "macedonian", "malayalam", "nci", "dutch", "norwegian",
                 "papiamento", "polish", "brazil", "portugal", "romanian", "russian", "slovak", "albanian",
                 "serbian", "swedish", "swahili-test", "tamil", "turkish", "vietnam", "zh", "zh", "zh-yue", "yue"],
-            AuditoryOutLanguageValues: ["en\\en", "en\\en", "en\\en-us", "en\\en-sc", "en\\en-wi", "en\\en-wi",
+            speechEspeakVoiceValues: ["en\\en", "en\\en", "en\\en-us", "en\\en-sc", "en\\en-wi", "en\\en-wi",
                 "en\\en-wi", "en\\en-wi", "af", "bg", "bs", "ca", "cs", "cy", "da", "de", "el", "test\\grc",
                 "eo", "es", "es", "es-la", "et", "fi", "fr", "fr-be", "hi", "hr", "hu", "hy", "hy-west", "id",
                 "is", "it", "test\\jbo", "ka", "kn", "ku", "la", "lv", "mk", "ml", "test\\nci", "nl", "no",
@@ -220,7 +223,7 @@ https://github.com/gpii/universal/LICENSE.txt
                 // WINDOWS
                 "http://registry.gpii.org/applications/org.nvda-project": [{
                     value: {
-                        "speech\\.espeak\\.voice": "en\\en",
+                        "speech.espeak.voice": "en\\en",
                         "speech.espeak.rate": 1,
                         "speech.espeak.rateBoost": false,
                         "reviewCursor.followFocus": false,
@@ -407,12 +410,20 @@ https://github.com/gpii/universal/LICENSE.txt
             "desktop.screen-positionLabel": {messagekey: "desktop.screen-positionLabel"},
             "desktop.show-cross-hairs": "${prefs.http://registry\\.gpii\\.org/applications/org\\.gnome\\.desktop\\.a11y\\.magnifier.0.value.show-cross-hairs}",
             "desktop.show-cross-hairsLabel": {messagekey: "desktop.show-cross-hairsLabel"},
+            "nvda.speech.espeak.voice": {
+                optionnames: "${speechEspeakVoiceNames}",
+                optionlist: "${speechEspeakVoiceValues}",
+                selection: "${prefs.http://registry\\.gpii\\.org/applications/org\\.nvda-project.0.value.speech\\.espeak\\.rate}"
+            },
+            "nvda.speech.espeak.voiceLabel": {
+                messagekey: "nvda.speech.espeak.voiceLabel"
+            },
             "nvda.speech.espeak.rate": {
                 decorators: {
                     type: "fluid",
                     func: "gpii.textfieldSlider",
                     options: {
-                        elPath: "prefs.http://registry\\.gpii\\.org/applications/org\\.nvda-project.0.value.speech.espeak.rate",
+                        elPath: "prefs.http://registry\\.gpii\\.org/applications/org\\.nvda-project.0.value.speech\\.espeak\\.rate",
                         model: {
                             min: 1,
                             max: 100
@@ -421,21 +432,21 @@ https://github.com/gpii/universal/LICENSE.txt
                 }
             },
             "nvda.speech.espeak.rateLabel": {messagekey: "nvda.speech.espeak.rateLabel"},
-            "nvda.speech.espeak.rateBoost": "${prefs.http://registry\\.gpii\\.org/applications/org\\.nvda-project.0.value.speech.espeak.rateBoost}",
+            "nvda.speech.espeak.rateBoost": "${prefs.http://registry\\.gpii\\.org/applications/org\\.nvda-project.0.value.speech\\.espeak\\.rateBoost}",
             "nvda.speech.espeak.rateBoostLabel": {messagekey: "nvda.speech.espeak.rateBoostLabel"},
-            "nvda.reviewCursor.followFocus": "${prefs.http://registry\\.gpii\\.org/applications/org\\.nvda-project.0.value.reviewCursor.followFocus}",
+            "nvda.reviewCursor.followFocus": "${prefs.http://registry\\.gpii\\.org/applications/org\\.nvda-project.0.value.reviewCursor\\.followFocus}",
             "nvda.reviewCursor.followFocusLabel": {messagekey: "nvda.reviewCursor.followFocusLabel"},
-            "nvda.reviewCursor.followCaret": "${prefs.http://registry\\.gpii\\.org/applications/org\\.nvda-project.0.value.reviewCursor.followCaret}",
+            "nvda.reviewCursor.followCaret": "${prefs.http://registry\\.gpii\\.org/applications/org\\.nvda-project.0.value.reviewCursor\\.followCaret}",
             "nvda.reviewCursor.followCaretLabel": {messagekey: "nvda.reviewCursor.followCaretLabel"},
-            "nvda.reviewCursor.followMouse": "${prefs.http://registry\\.gpii\\.org/applications/org\\.nvda-project.0.value.reviewCursor.followMouse}",
+            "nvda.reviewCursor.followMouse": "${prefs.http://registry\\.gpii\\.org/applications/org\\.nvda-project.0.value.reviewCursor\\.followMouse}",
             "nvda.reviewCursor.followMouseLabel": {messagekey: "nvda.reviewCursor.followMouseLabel"},
-            "nvda.presentation.reportHelpBalloons": "${prefs.http://registry\\.gpii\\.org/applications/org\\.nvda-project.0.value.presentation.reportHelpBalloons}",
+            "nvda.presentation.reportHelpBalloons": "${prefs.http://registry\\.gpii\\.org/applications/org\\.nvda-project.0.value.presentation\\.reportHelpBalloons}",
             "nvda.presentation.reportHelpBalloonsLabel": {messagekey: "nvda.presentation.reportHelpBalloonsLabel"},
-            "nvda.keyboard.speakTypedCharacters": "${prefs.http://registry\\.gpii\\.org/applications/org\\.nvda-project.0.value.keyboard.speakTypedCharacters}",
+            "nvda.keyboard.speakTypedCharacters": "${prefs.http://registry\\.gpii\\.org/applications/org\\.nvda-project.0.value.keyboard\\.speakTypedCharacters}",
             "nvda.keyboard.speakTypedCharactersLabel": {messagekey: "nvda.keyboard.speakTypedCharactersLabel"},
-            "nvda.keyboard.speakTypedWords": "${prefs.http://registry\\.gpii\\.org/applications/org\\.nvda-project.0.value.keyboard.speakTypedWords}",
+            "nvda.keyboard.speakTypedWords": "${prefs.http://registry\\.gpii\\.org/applications/org\\.nvda-project.0.value.keyboard\\.speakTypedWords}",
             "nvda.keyboard.speakTypedWordsLabel": {messagekey: "nvda.keyboard.speakTypedWordsLabel"},
-            "nvda.speech.espeak.sayCapForCapitals": "${prefs.http://registry\\.gpii\\.org/applications/org\\.nvda-project.0.value.speech.espeak.sayCapForCapitals}",
+            "nvda.speech.espeak.sayCapForCapitals": "${prefs.http://registry\\.gpii\\.org/applications/org\\.nvda-project.0.value.speech\\.espeak\\.sayCapForCapitals}",
             "nvda.speech.espeak.sayCapForCapitalsLabel": {messagekey: "nvda.speech.espeak.sayCapForCapitalsLabel"}
         },
         events: {
