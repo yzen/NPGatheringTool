@@ -65,6 +65,7 @@ https://github.com/gpii/universal/LICENSE.txt
             "desktop.mag-factorLabel": "Magnification Factor",
             "desktop.screen-positionLabel": "Screen Position",
             "desktop.show-cross-hairsLabel": "Show Cross Hairs",
+            "nvda.speech.espeak.rateLabel": "Rate",
             "nvda.speech.espeak.rateBoostLabel": "Rate Boost"
             
         },
@@ -117,8 +118,10 @@ https://github.com/gpii/universal/LICENSE.txt
             "desktop.show-cross-hairs": ".gpii-NPGatheringTool-desktop-show-cross-hairs",
             "desktop.show-cross-hairsLabel": ".gpii-NPGatheringTool-desktop-show-cross-hairsLabel",
 
-            "nvda.speech.espeak.rateBoostLabel": ".gpii-NPGatheringTool-nvda-speech-espeak-rateBoostLabel",
-            "nvda.speech.espeak.rateBoost": ".gpii-NPGatheringTool-nvda-speech-espeak-rateBoost" 
+            "nvda.speech.espeak.rate": ".gpii-NPGatheringTool-nvda-speech-espeak-rate",
+            "nvda.speech.espeak.rateLabel": ".gpii-NPGatheringTool-nvda-speech-espeak-rateLabel",
+            "nvda.speech.espeak.rateBoost": ".gpii-NPGatheringTool-nvda-speech-espeak-rateBoost",
+            "nvda.speech.espeak.rateBoostLabel": ".gpii-NPGatheringTool-nvda-speech-espeak-rateBoostLabel"
             
         },
         model: {
@@ -182,8 +185,8 @@ https://github.com/gpii/universal/LICENSE.txt
                 "http://registry.gpii.org/applications/org.nvda-project": [{
                     value: {
                         "speech\\.espeak\\.voice": "en\\en",
-                        "speech\\.espeak\\.rate": 1,
-                        "speech\\.espeak\\.rateBoost": false,
+                        "speech.espeak.rate": 1,
+                        "speech.espeak.rateBoost": false,
                         "reviewCursor\\.followFocus": false,
                         "reviewCursor\\.followCaret": false,
                         "reviewCursor\\.followMouse": false,
@@ -368,7 +371,22 @@ https://github.com/gpii/universal/LICENSE.txt
             "desktop.screen-positionLabel": {messagekey: "desktop.screen-positionLabel"},
             "desktop.show-cross-hairs": "${prefs.http://registry\\.gpii\\.org/applications/org\\.gnome\\.desktop\\.a11y\\.magnifier.0.value.show-cross-hairs}",
             "desktop.show-cross-hairsLabel": {messagekey: "desktop.show-cross-hairsLabel"},
-            "nvda.speech\\.espeak\\.rateBoost": "${prefs.http://registry\\.gpii\\.org/applications/org\\.nvda-project.0.value.speech\\.espeak\\.rateBoost}"
+            "nvda.speech.espeak.rate": {
+                decorators: {
+                    type: "fluid",
+                    func: "gpii.textfieldSlider",
+                    options: {
+                        elPath: "prefs.http://registry\\.gpii\\.org/applications/org\\.nvda-project.0.value.speech.espeak.rate",
+                        model: {
+                            min: 1,
+                            max: 100
+                        }
+                    }
+                }
+            },
+            "nvda.speech.espeak.rateLabel": {messagekey: "nvda.speech.espeak.rateLabel"},
+            "nvda.speech.espeak.rateBoost": "${prefs.http://registry\\.gpii\\.org/applications/org\\.nvda-project.0.value.speech.espeak.rateBoost}",
+            "nvda.speech.espeak.rateBoostLabel": {messagekey: "nvda.speech.espeak.rateBoostLabel"}
         },
         events: {
             updatePrefs: null
