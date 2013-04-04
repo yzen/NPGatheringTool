@@ -215,7 +215,7 @@ https://github.com/gpii/universal/LICENSE.txt
             "icon-themeValues": ["HighContrast", "gnome"],
             "screen-positionValues": ["full-screen", "left-half", "right-half", "top-half", "bottom-half"],
             speechSynthNames: ["Disabled", "Enabled"],
-            speechSynthValues: ["silence", "none"],
+            speechSynthValues: ["silence", "espeak"],
             outputDeviceNames: ["Disabled", "Enabled"],
             outputDeviceValues: ["none", "Microsoft Sound Mapper"],
             cursors: {
@@ -429,19 +429,19 @@ https://github.com/gpii/universal/LICENSE.txt
                 "http://registry.gpii.org/applications/org.nvda-project": [{
                     value: {
                         "speech.espeak.voice": "en\\en",
-                        "speech.espeak.rate": 1,
+                        "speech.espeak.rate": 45,
                         "speech.espeak.rateBoost": false,
-                        "reviewCursor.followFocus": false,
-                        "reviewCursor.followCaret": false,
+                        "reviewCursor.followFocus": true,
+                        "reviewCursor.followCaret": true,
                         "reviewCursor.followMouse": false,
-                        "presentation.reportHelpBalloons": false,
-                        "keyboard.speakTypedCharacters": false,
+                        "presentation.reportHelpBalloons": true,
+                        "keyboard.speakTypedCharacters": true,
                         "keyboard.speakTypedWords": false,
                         "speech.espeak.sayCapForCapitals": false,
-                        "speech.symbolLevel": 0,
+                        "speech.symbolLevel": 100,
                         "virtualBuffers.autoSayAllOnPageLoad": false,
-                        "speech.synth": "silence",
-                        "speech.outputDevice": "none"
+                        "speech.synth": "espeak",
+                        "speech.outputDevice": "Microsoft Sound Mapper"
                     }
                 }],
                 "http://registry.gpii.org/applications/com.microsoft.windows.highContrast": [{
@@ -511,7 +511,7 @@ https://github.com/gpii/universal/LICENSE.txt
                 "http://registry.gpii.org/applications/com.microsoft.windows.magnifier": [{
                     value: {
                         Magnification: {
-                            value: 100,
+                            value: 200,
                             dataType: "REG_DWORD"
                         },
                         FollowFocus: {
@@ -523,11 +523,11 @@ https://github.com/gpii/universal/LICENSE.txt
                             dataType: "REG_DWORD"
                         },
                         FollowMouse: {
-                            value: 0,
+                            value: 1,
                             dataType: "REG_DWORD"
                         },
                         MagnificationMode: {
-                            value: 1,
+                            value: 2,
                             dataType: "REG_DWORD"
                         }
                     }
