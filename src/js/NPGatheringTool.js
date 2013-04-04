@@ -386,6 +386,8 @@ https://github.com/gpii/universal/LICENSE.txt
                     }
                 }
             },
+            verbalizePunctuationStyleList: [0, 1, 2, 3],
+            verbalizePunctuationStyleNames: ["All", "Most", "Some", "None"],
             prefs: {
                 // LINUX
                 "http://registry.gpii.org/applications/org.gnome.orca.voice.default": [{
@@ -597,13 +599,11 @@ https://github.com/gpii/universal/LICENSE.txt
             "orca.verbalizePunctuationStyle": {
                 decorators: {
                     type: "fluid",
-                    func: "gpii.textfieldSlider",
+                    func: "gpii.numericDropDown",
                     options: {
-                        elPath: "prefs.http://registry\\.gpii\\.org/applications/org\\.gnome\\.orca.0.value.verbalizePunctuationStyle",
-                        model: {
-                            min: 0,
-                            max: 3
-                        }
+                        optionnames: "${verbalizePunctuationStyleNames}",
+                        optionlist: "${verbalizePunctuationStyleList}",
+                        selection: "prefs.http://registry\\.gpii\\.org/applications/org\\.gnome\\.orca.0.value.verbalizePunctuationStyle"
                     }
                 }
             },
@@ -909,6 +909,37 @@ https://github.com/gpii/universal/LICENSE.txt
                 location.replace(token);
             }
         });
+    };
+
+    fluid.defaults("gpii.numericDropDown", {
+        gradeNames: ["autoInit", "fluid.rendererComponent"],
+        applier: "{gpii.NPGatheringTool}.applier",
+        model: "{gpii.NPGatheringTool}.model",
+        optionnames: [],
+        optionlist: [],
+        selection: "",
+        produceTree: "gpii.numericDropDown.produceTree",
+        selectors: {
+            select: ".gpii-numericDropDown-select"
+        },
+        renderOnInit: true
+    });
+    gpii.numericDropDown.preInit = function (that) {
+        that.applier.guards.addListener(that.options.selection, function (model, changeRequest) {
+            changeRequest.value |= 0;
+        });
+        that.options.optionlist = fluid.transform(that.options.optionlist, function (option) {
+            return option.toString();
+        });
+    };
+    gpii.numericDropDown.produceTree = function (that) {
+        return {
+            select: {
+                optionnames: that.options.optionnames,
+                optionlist: that.options.optionlist,
+                selection: "${" + that.options.selection + "}"
+            }
+        };
     };
 
     fluid.defaults("gpii.textfieldSlider", {
