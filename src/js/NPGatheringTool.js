@@ -218,6 +218,8 @@ https://github.com/gpii/universal/LICENSE.txt
             speechSynthValues: ["silence", "espeak"],
             outputDeviceNames: ["Disabled", "Enabled"],
             outputDeviceValues: ["none", "Microsoft Sound Mapper"],
+            magnificationModeNames: ["Dock", "Full Screen", "Lens"],
+            magnificationModeValues: [1, 2, 3],
             cursors: {
                 values: ["Normal", "Large", "Extra Large"],
                 selection: "Normal",
@@ -395,7 +397,7 @@ https://github.com/gpii/universal/LICENSE.txt
                 "http://registry.gpii.org/applications/org.gnome.orca.voice.default": [{
                     value: {
                         family: "en",
-                        rate: 0
+                        rate: 50.0
                     }
                 }],
                 "http://registry.gpii.org/applications/org.gnome.orca": [{
@@ -404,7 +406,7 @@ https://github.com/gpii/universal/LICENSE.txt
                         enableEchoByCharacter: false,
                         enableEchoByWord: false,
                         enableBraille: false,
-                        verbalizePunctuationStyle: 0,
+                        verbalizePunctuationStyle: 3,
                         sayAllStyle: 1,
                         enableSpeech: false
                     }
@@ -413,8 +415,8 @@ https://github.com/gpii/universal/LICENSE.txt
                     value: {
                         "gtk-theme": "Adwaita",
                         "icon-theme": "gnome",
-                        "text-scaling-factor": 0.5,
-                        "cursor-size": 1
+                        "text-scaling-factor": 1.0,
+                        "cursor-size": 24
                     }
                 }],
                 "http://registry.gpii.org/applications/org.gnome.desktop.a11y.applications": [{
@@ -583,8 +585,11 @@ https://github.com/gpii/universal/LICENSE.txt
                     options: {
                         elPath: "prefs.http://registry\\.gpii\\.org/applications/org\\.gnome\\.orca\\.voice\\.default.0.value.rate",
                         model: {
-                            min: 0,
-                            max: 100
+                            min: 0.0,
+                            max: 100.0
+                        },
+                        sliderOptions: {
+                            step: 0.1
                         }
                     }
                 }
@@ -831,13 +836,11 @@ https://github.com/gpii/universal/LICENSE.txt
             "magnifier.MagnificationMode": {
                 decorators: {
                     type: "fluid",
-                    func: "gpii.textfieldSlider",
+                    func: "gpii.numericDropDown",
                     options: {
-                        elPath: "prefs.http://registry\\.gpii\\.org/applications/com\\.microsoft\\.windows\\.magnifier.0.value.MagnificationMode.value",
-                        model: {
-                            min: 1,
-                            max: 3
-                        }
+                        optionnames: "${magnificationModeNames}",
+                        optionlist: "${magnificationModeValues}",
+                        selection: "prefs.http://registry\\.gpii\\.org/applications/com\\.microsoft\\.windows\\.magnifier.0.value.MagnificationMode.value"
                     }
                 }
             },
@@ -918,6 +921,7 @@ https://github.com/gpii/universal/LICENSE.txt
         gradeNames: ["autoInit", "fluid.rendererComponent"],
         applier: "{gpii.NPGatheringTool}.applier",
         model: "{gpii.NPGatheringTool}.model",
+        resolverGetConfig: "{gpii.NPGatheringTool}.options.resolverGetConfig",
         optionnames: [],
         optionlist: [],
         selection: "",
@@ -925,9 +929,17 @@ https://github.com/gpii/universal/LICENSE.txt
         selectors: {
             select: ".gpii-numericDropDown-select"
         },
+        listeners: {
+            afterRender: "{that}.updateSelection"
+        },
         renderOnInit: true
     });
     gpii.numericDropDown.preInit = function (that) {
+        var originalSelection = fluid.get(that.model, that.options.selection, that.options.resolverGetConfig);
+        that.applier.requestChange(that.options.selection, originalSelection.toString());
+        that.updateSelection = function () {
+            that.applier.requestChange(that.options.selection, originalSelection);
+        };
         that.applier.guards.addListener(that.options.selection, function (model, changeRequest) {
             changeRequest.value |= 0;
         });
