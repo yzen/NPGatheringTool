@@ -388,6 +388,8 @@ https://github.com/gpii/universal/LICENSE.txt
             },
             verbalizePunctuationStyleList: [0, 1, 2, 3],
             verbalizePunctuationStyleNames: ["All", "Most", "Some", "None"],
+            sayAllStyleNames: ["Line", "Sentence"],
+            sayAllStyleList: [0, 1],
             prefs: {
                 // LINUX
                 "http://registry.gpii.org/applications/org.gnome.orca.voice.default": [{
@@ -403,14 +405,14 @@ https://github.com/gpii/universal/LICENSE.txt
                         enableEchoByWord: false,
                         enableBraille: false,
                         verbalizePunctuationStyle: 0,
-                        sayAllStyle: 0,
+                        sayAllStyle: 1,
                         enableSpeech: false
                     }
                 }],
                 "http://registry.gpii.org/applications/org.gnome.desktop.interface": [{
                     value: {
-                        "gtk-theme": "HighContrast",
-                        "icon-theme": "HighContrast",
+                        "gtk-theme": "Adwaita",
+                        "icon-theme": "gnome",
                         "text-scaling-factor": 0.5,
                         "cursor-size": 1
                     }
@@ -422,7 +424,7 @@ https://github.com/gpii/universal/LICENSE.txt
                 }],
                 "http://registry.gpii.org/applications/org.gnome.desktop.a11y.magnifier": [{
                     value: {
-                        "mag-factor": 1,
+                        "mag-factor": 2.0,
                         "screen-position": "full-screen",
                         "show-cross-hairs": false
                     }
@@ -611,13 +613,11 @@ https://github.com/gpii/universal/LICENSE.txt
             "orca.sayAllStyle": {
                 decorators: {
                     type: "fluid",
-                    func: "gpii.textfieldSlider",
+                    func: "gpii.numericDropDown",
                     options: {
-                        elPath: "prefs.http://registry\\.gpii\\.org/applications/org\\.gnome\\.orca.0.value.sayAllStyle",
-                        model: {
-                            min: 0,
-                            max: 1
-                        }
+                        optionnames: "${sayAllStyleNames}",
+                        optionlist: "${sayAllStyleList}",
+                        selection: "prefs.http://registry\\.gpii\\.org/applications/org\\.gnome\\.orca.0.value.sayAllStyle"
                     }
                 }
             },
@@ -677,8 +677,11 @@ https://github.com/gpii/universal/LICENSE.txt
                     options: {
                         elPath: "prefs.http://registry\\.gpii\\.org/applications/org\\.gnome\\.desktop\\.a11y\\.magnifier.0.value.mag-factor",
                         model: {
-                            min: 1,
-                            max: 20
+                            min: 0.1,
+                            max: 32.0
+                        },
+                        sliderOptions: {
+                            step: 0.1
                         }
                     }
                 }
