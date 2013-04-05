@@ -417,7 +417,7 @@ https://github.com/gpii/universal/LICENSE.txt
                 }],
                 "http://registry.gpii.org/applications/org.gnome.desktop.a11y.applications": [{
                     value: {
-                        "screen-magnifier-enabled": false // TODO
+                        "screen-magnifier-enabled": false
                     }
                 }],
                 "http://registry.gpii.org/applications/org.gnome.desktop.a11y.magnifier": [{
