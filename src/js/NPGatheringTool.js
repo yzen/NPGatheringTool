@@ -880,14 +880,18 @@ https://github.com/gpii/universal/LICENSE.txt
     });
 
     gpii.NPGatheringTool.finalInit = function (that) {
+        var cursorsPath =
+            "prefs.http://registry\\.gpii\\.org/applications/com\\.microsoft\\.windows\\.cursors.0.value";
+        var voicesDefaultFamilyPath =
+            "prefs.http://registry\\.gpii\\.org/applications/com\\.microsoft\\.windows\\.cursors.0.value";
+
         that.applier.modelChanged.addListener("cursors.selection", function (model) {
-            that.applier.requestChange(
-                "prefs.http://registry\\.gpii\\.org/applications/com\\.microsoft\\.windows\\.cursors.0.value",
+            that.applier.requestChange(cursorsPath,
                 that.model.cursors.cursorValues[model.cursors.selection]);
         });
         that.applier.modelChanged.addListener("voicesDefaultFamily.selection", function (model) {
             that.applier.requestChange(
-                "prefs.http://registry\\.gpii\\.org/applications/org\\.gnome\\.orca\\.voice\\.default.0.value.family",
+                voicesDefaultFamilyPath,
                 that.model.voicesDefaultFamily.voicesDefaultFamilyValues[model.voicesDefaultFamily.selection]);
         });
     };
@@ -934,7 +938,8 @@ https://github.com/gpii/universal/LICENSE.txt
             select: ".gpii-numericDropDown-select"
         },
         listeners: {
-            afterRender: "{that}.updateSelection"
+            afterRender: "{that}.updateSelection",
+            onDestroy: "{that}.clearListener"
         },
         renderOnInit: true
     });
@@ -944,9 +949,16 @@ https://github.com/gpii/universal/LICENSE.txt
         that.updateSelection = function () {
             that.applier.requestChange(that.options.selection, originalSelection);
         };
-        that.applier.guards.addListener(that.options.selection, function (model, changeRequest) {
+        var listener = function (model, changeRequest) {
+            if (changeRequest.path !== that.options.selection) {
+                return;
+            }
             changeRequest.value |= 0;
-        });
+        };
+        that.clearListener = function () {
+            that.applier.guards.removeListener(listener);
+        };
+        that.applier.guards.addListener(that.options.selection, listener);
         that.options.optionlist = fluid.transform(that.options.optionlist, function (option) {
             return option.toString();
         });
