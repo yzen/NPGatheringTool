@@ -183,34 +183,30 @@ https://github.com/gpii/universal/LICENSE.txt
         },
         model: {
             token: "",
-            voicesDefaultFamilyNames: ["english", "english-us", "english-scottish", "english-westindies",
-                "afrikaans", "bulgarian-test", "bosnian", "catalan", "czech", "welsh-test", "danish",
-                "german", "greek", "greek-ancient", "esperanto", "spanish", "spanish-latin-american",
-                "estonian", "finnish", "french", "belgian", "hindi", "croatian", "hungarian", "armenian",
-                "armenian-west", "indonesian-test", "icelandic-test", "italian", "lojban", "georgian-test",
-                "kannada", "kurdish", "latin", "latvian", "macedonian-test", "malayalam", "dutch-test",
-                "norwegian", "papiamento-test", "polish", "brazil", "portugal", "romanian", "russian_test",
-                "slovak", "albanian", "serbian", "swedish", "swahili-test", "tamil", "turkish", "vietnam",
-                "mandarin", "cantonese"],
-            voicesDefaultFamilyValues: ["en", "en", "en", "en", "af", "bg", "bs", "ca", "cs", "cy", "da",
-                "de", "el", "grc", "eo", "es", "es", "et", "fi", "fr", "fr", "hi", "hr", "hu", "hy", "hy",
-                "id", "is", "it", "jbo", "ka", "kn", "ku", "la", "lv", "mk", "ml", "nl", "no", "pap", "pl",
-                "pt", "pt", "ro", "ru", "sk", "sq", "sr", "sv", "sw", "ta", "tr", "vi", "zh", "zh"],
-            speechEspeakVoiceNames: ["english", "english-gb", "english-us", "english-scotland",
-                "english-belize", "english-bs", "english-ag", "english-ai", "afrikaans", "bulgarian",
-                "bosnian", "catalan", "czech", "welsh-test", "danish", "german", "greek", "greek-ancient",
-                "esperanto", "spanish", "spanish-spain", "spanish-latin-american", "estonian", "finnish",
-                "french", "belgian", "hindi", "croatian", "hungarian", "armenian", "armenian-west",
-                "indonesian-test", "icelandic-test", "italian", "lojban", "georgian-test", "kannada",
-                "kurdish", "latin", "latvian", "macedonian", "malayalam", "nci", "dutch", "norwegian",
-                "papiamento", "polish", "brazil", "portugal", "romanian", "russian", "slovak", "albanian",
-                "serbian", "swedish", "swahili-test", "tamil", "turkish", "vietnam", "zh", "zh", "zh-yue", "yue"],
-            speechEspeakVoiceValues: ["en\\en", "en\\en", "en\\en-us", "en\\en-sc", "en\\en-wi", "en\\en-wi",
-                "en\\en-wi", "en\\en-wi", "af", "bg", "bs", "ca", "cs", "cy", "da", "de", "el", "test\\grc",
-                "eo", "es", "es", "es-la", "et", "fi", "fr", "fr-be", "hi", "hr", "hu", "hy", "hy-west", "id",
-                "is", "it", "test\\jbo", "ka", "kn", "ku", "la", "lv", "mk", "ml", "test\\nci", "nl", "no",
-                "test\\pap", "pl", "pt", "pt-pt", "ro", "ru", "sk", "sq", "sr", "sv", "sw", "ta", "tr", "vi",
-                "zh", "zh", "zh-yue", "yue"],
+            voicesDefaultFamily: {
+                values: ["english", "german", "greek", "spanish"],
+                selection: "english",
+                voicesDefaultFamilyValues: {
+                    english: {
+                        locale: "en",
+                        name: "english"
+                    },
+                    german: {
+                        locale: "de",
+                        name: "german"
+                    },
+                    greek: {
+                        locale: "el",
+                        name: "greek"
+                    },
+                    spanish: {
+                        locale: "es",
+                        name: "spanish"
+                    }
+                }
+            },
+            speechEspeakVoiceNames: ["english", "german", "greek", "spanish"],
+            speechEspeakVoiceValues: ["en\\en", "de", "el", "es"],
             "gtk-themeValues": ["HighContrast", "Adwaita"],
             "icon-themeValues": ["HighContrast", "gnome"],
             "screen-positionValues": ["full-screen", "left-half", "right-half", "top-half", "bottom-half"],
@@ -396,7 +392,10 @@ https://github.com/gpii/universal/LICENSE.txt
                 // LINUX
                 "http://registry.gpii.org/applications/org.gnome.orca.voice.default": [{
                     value: {
-                        family: "en",
+                        family: {
+                            locale: "en",
+                            name: "english"
+                        },
                         rate: 50.0
                     }
                 }],
@@ -573,9 +572,9 @@ https://github.com/gpii/universal/LICENSE.txt
                 messagekey: "magnifierGroupLabel"
             },
             "orca.voice.default.family": {
-                optionnames: "${voicesDefaultFamilyNames}",
-                optionlist: "${voicesDefaultFamilyValues}",
-                selection: "${prefs.http://registry\\.gpii\\.org/applications/org\\.gnome\\.orca\\.voice\\.default.0.value.family}"
+                optionnames: "${voicesDefaultFamily.values}",
+                optionlist: "${voicesDefaultFamily.values}",
+                selection: "${voicesDefaultFamily.selection}"
             },
             "orca.voice.default.familyLabel": {messagekey: "orca.voice.default.familyLabel"},
             "orca.voice.default.rate": {
@@ -885,6 +884,11 @@ https://github.com/gpii/universal/LICENSE.txt
             that.applier.requestChange(
                 "prefs.http://registry\\.gpii\\.org/applications/com\\.microsoft\\.windows\\.cursors.0.value",
                 that.model.cursors.cursorValues[model.cursors.selection]);
+        });
+        that.applier.modelChanged.addListener("voicesDefaultFamily.selection", function (model) {
+            that.applier.requestChange(
+                "prefs.http://registry\\.gpii\\.org/applications/org\\.gnome\\.orca\\.voice\\.default.0.value.family",
+                that.model.voicesDefaultFamily.voicesDefaultFamilyValues[model.voicesDefaultFamily.selection]);
         });
     };
 
