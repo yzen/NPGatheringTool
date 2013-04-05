@@ -883,7 +883,7 @@ https://github.com/gpii/universal/LICENSE.txt
         var cursorsPath =
             "prefs.http://registry\\.gpii\\.org/applications/com\\.microsoft\\.windows\\.cursors.0.value";
         var voicesDefaultFamilyPath =
-            "prefs.http://registry\\.gpii\\.org/applications/com\\.microsoft\\.windows\\.cursors.0.value";
+            "prefs.http://registry\\.gpii\\.org/applications/org\\.gnome\\.orca\\.voice\\.default.0.value.family";
 
         that.applier.modelChanged.addListener("cursors.selection", function (model) {
             that.applier.requestChange(cursorsPath,
