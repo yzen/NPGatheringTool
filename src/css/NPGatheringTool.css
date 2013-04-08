@@ -49,3 +49,6 @@ input[type="checkbox"] {
     float: left;
     margin-right: 5px;
 }
+textarea {
+    width: 100%;
+}

@@ -41,6 +41,7 @@ https://github.com/gpii/universal/LICENSE.txt
         strings: {
             save: "Save",
             label: "N/P Gathering Tool",
+            notes: "Notes",
             tokenLabel: "Token",
             linuxGroupLabel: "Linux",
             windowsGroupLabel: "Windows",
@@ -93,6 +94,8 @@ https://github.com/gpii/universal/LICENSE.txt
 
             tokenLabel: ".gpii-NPGatheringTool-token-label",
             token: ".gpii-NPGatheringTool-token",
+            notesLabel: ".gpii-NPGatheringTool-notes-label",
+            notes: ".gpii-NPGatheringTool-notes",
 
             label: ".gpii-NPGatheringTool-label",
             linuxGroupLabel: ".gpii-NPGatheringTool-linuxGroupLabel",
@@ -389,6 +392,7 @@ https://github.com/gpii/universal/LICENSE.txt
             sayAllStyleNames: ["Line", "Sentence"],
             sayAllStyleList: [0, 1],
             prefs: {
+                notes: "",
                 // LINUX
                 "http://registry.gpii.org/applications/org.gnome.orca.voice.default": [{
                     value: {
@@ -547,6 +551,10 @@ https://github.com/gpii/universal/LICENSE.txt
                 messagekey: "tokenLabel"
             },
             token: "${token}",
+            notesLabel: {
+                messagekey: "notes"
+            },
+            notes: "${prefs.notes}",
             label: {
                 messagekey: "label"
             },
