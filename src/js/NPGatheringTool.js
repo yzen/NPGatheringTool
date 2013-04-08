@@ -43,6 +43,7 @@ https://github.com/gpii/universal/LICENSE.txt
             label: "N/P Gathering Tool",
             notes: "Notes",
             tokenLabel: "Token",
+            missingToken: "User token is missing.",
             linuxGroupLabel: "Linux",
             windowsGroupLabel: "Windows",
             orcaGroupLabel: "Orca",
@@ -63,7 +64,6 @@ https://github.com/gpii/universal/LICENSE.txt
             "desktop.icon-themeLabel": "Icon Theme",
             "desktop.text-scaling-factorLabel": "Text Scaling Factor",
             "desktop.cursor-sizeLabel": "Cursor Size",
-            "desktop.screen-magnifier-enabledLabel": "Enable Screen Magnifier",
             "desktop.mag-factorLabel": "Magnification Factor",
             "desktop.screen-positionLabel": "Screen Position",
             "desktop.show-cross-hairsLabel": "Show Cross Hairs",
@@ -132,8 +132,6 @@ https://github.com/gpii/universal/LICENSE.txt
             "desktop.text-scaling-factorLabel": ".gpii-NPGatheringTool-desktop-text-scaling-factorLabel",
             "desktop.cursor-size": ".gpii-NPGatheringTool-desktop-cursor-size",
             "desktop.cursor-sizeLabel": ".gpii-NPGatheringTool-desktop-cursor-sizeLabel",
-            "desktop.screen-magnifier-enabled": ".gpii-NPGatheringTool-desktop-screen-magnifier-enabled",
-            "desktop.screen-magnifier-enabledLabel": ".gpii-NPGatheringTool-desktop-screen-magnifier-enabledLabel",
             "desktop.mag-factor": ".gpii-NPGatheringTool-desktop-mag-factor",
             "desktop.mag-factorLabel": ".gpii-NPGatheringTool-desktop-mag-factorLabel",
             "desktop.screen-position": ".gpii-NPGatheringTool-desktop-screen-position",
@@ -391,18 +389,9 @@ https://github.com/gpii/universal/LICENSE.txt
             verbalizePunctuationStyleNames: ["All", "Most", "Some", "None"],
             sayAllStyleNames: ["Line", "Sentence"],
             sayAllStyleList: [0, 1],
-            prefs: {
+            defaults: {
                 notes: "",
                 // LINUX
-                "http://registry.gpii.org/applications/org.gnome.orca.voice.default": [{
-                    value: {
-                        family: {
-                            locale: "en",
-                            name: "english"
-                        },
-                        rate: 50.0
-                    }
-                }],
                 "http://registry.gpii.org/applications/org.gnome.orca": [{
                     value: {
                         enableTutorialMessages: false,
@@ -411,7 +400,12 @@ https://github.com/gpii/universal/LICENSE.txt
                         enableBraille: false,
                         verbalizePunctuationStyle: 3,
                         sayAllStyle: 1,
-                        enableSpeech: false
+                        enableSpeech: false,
+                        "voices.default.rate": 50.0,
+                        "voices.default.family": {
+                            locale: "en",
+                            name: "english"
+                        }
                     }
                 }],
                 "http://registry.gpii.org/applications/org.gnome.desktop.interface": [{
@@ -420,11 +414,6 @@ https://github.com/gpii/universal/LICENSE.txt
                         "icon-theme": "gnome",
                         "text-scaling-factor": 1.0,
                         "cursor-size": 24
-                    }
-                }],
-                "http://registry.gpii.org/applications/org.gnome.desktop.a11y.applications": [{
-                    value: {
-                        "screen-magnifier-enabled": false
                     }
                 }],
                 "http://registry.gpii.org/applications/org.gnome.desktop.a11y.magnifier": [{
@@ -541,7 +530,9 @@ https://github.com/gpii/universal/LICENSE.txt
                         }
                     }
                 }]
-            }
+            },
+            prefs: {},
+            savedPrefs: {}
         },
         protoTree: {
             save: {
@@ -590,7 +581,7 @@ https://github.com/gpii/universal/LICENSE.txt
                     type: "fluid",
                     func: "gpii.textfieldSlider",
                     options: {
-                        elPath: "prefs.http://registry\\.gpii\\.org/applications/org\\.gnome\\.orca\\.voice\\.default.0.value.rate",
+                        elPath: "prefs.http://registry\\.gpii\\.org/applications/org\\.gnome\\.orca.0.value.voices\\.default\\.rate",
                         model: {
                             min: 0.0,
                             max: 100.0
@@ -679,9 +670,6 @@ https://github.com/gpii/universal/LICENSE.txt
                 }
             },
             "desktop.cursor-sizeLabel": {messagekey: "desktop.cursor-sizeLabel"},
-            "desktop.screen-magnifier-enabled":
-                "${prefs.http://registry\\.gpii\\.org/applications/org\\.gnome\\.desktop\\.a11y\\.applications.0.value.screen-magnifier-enabled}",
-            "desktop.screen-magnifier-enabledLabel": {messagekey: "desktop.screen-magnifier-enabledLabel"},
             "desktop.mag-factor": {
                 decorators: {
                     type: "fluid",
@@ -859,7 +847,8 @@ https://github.com/gpii/universal/LICENSE.txt
         prefsUrl: "/prefs/%token",
         listeners: {
             updatePrefs: "{that}.updatePrefs",
-            afterRender: "{that}.bindSave"
+            afterRender: "{that}.bindSave",
+            prepareModelForRender: "{that}.prepareModel"
         },
         invokers: {
             updatePrefs: {
@@ -873,6 +862,14 @@ https://github.com/gpii/universal/LICENSE.txt
             bindSave: {
                 funcName: "gpii.NPGatheringTool.bindSave",
                 args: ["{that}.dom.save", "{that}.save"]
+            },
+            prepareModel: {
+                funcName: "gpii.NPGatheringTool.prepareModel",
+                args: ["{that}.model", "{that}.applier"]
+            },
+            buildModel: {
+                funcName: "gpii.NPGatheringTool.buildModel",
+                args: ["{that}.model"]
             }
         },
         components: {
@@ -886,6 +883,11 @@ https://github.com/gpii/universal/LICENSE.txt
         resolverGetConfig: gpii.NPGatheringTool.resolverGetConfig,
         resolverSetConfig: gpii.NPGatheringTool.resolverSetConfig
     });
+
+    gpii.NPGatheringTool.prepareModel = function (model, applier) {
+        var prefs = $.extend(true, fluid.copy(model.defaults), fluid.copy(model.savedPrefs));
+        applier.requestChange("prefs", prefs);
+    };
 
     gpii.NPGatheringTool.deepEq = function (obj1, obj2) {
         var equal = true;
@@ -905,7 +907,7 @@ https://github.com/gpii/universal/LICENSE.txt
             cursors:
                 "prefs.http://registry\\.gpii\\.org/applications/com\\.microsoft\\.windows\\.cursors.0.value",
             voicesDefaultFamily:
-                "prefs.http://registry\\.gpii\\.org/applications/org\\.gnome\\.orca\\.voice\\.default.0.value.family"
+                "prefs.http://registry\\.gpii\\.org/applications/org\\.gnome\\.orca.0.value.voices\\.default\\.family"
         };
 
         fluid.each(bindings, function (elPath, path) {
@@ -939,7 +941,7 @@ https://github.com/gpii/universal/LICENSE.txt
 
     gpii.NPGatheringTool.updatePrefs = function (applier, model, refreshView) {
         applier.requestChange("token", model.token);
-        applier.requestChange("prefs", model.prefs);
+        applier.requestChange("savedPrefs", model.prefs);
         refreshView();
     };
 
@@ -947,15 +949,29 @@ https://github.com/gpii/universal/LICENSE.txt
         saveButton.click(save);
     };
 
+    gpii.NPGatheringTool.buildModel = function (model) {
+        var togo = fluid.copy(model.prefs);
+        fluid.remove_if(togo, function (val, key) {
+            if (fluid.isPrimitive(val)) {
+                return val === model.defaults[key];
+            } else {
+                return gpii.NPGatheringTool.deepEq(model.defaults[key], val);
+            }
+        });
+        return togo;
+    };
+
     gpii.NPGatheringTool.save = function (that) {
         var token = that.model.token;
         if (!token) {
+            alert(that.options.strings.missingToken);
             return;
         }
+        var data = that.buildModel();
         $.ajax({
             url: fluid.stringTemplate(that.options.prefsUrl, {token: token}),
             type: "POST",
-            data: JSON.stringify(that.model.prefs),
+            data: JSON.stringify(data),
             contentType: "application/json",
             success: function (data) {
                 if (data.isError) {
