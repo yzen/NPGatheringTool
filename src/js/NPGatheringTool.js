@@ -184,9 +184,9 @@ https://github.com/gpii/universal/LICENSE.txt
         model: {
             token: "",
             voicesDefaultFamily: {
-                values: ["english", "german", "greek", "spanish"],
+                valuelist: ["english", "german", "greek", "spanish"],
                 selection: "english",
-                voicesDefaultFamilyValues: {
+                values: {
                     english: {
                         locale: "en",
                         name: "english"
@@ -217,9 +217,9 @@ https://github.com/gpii/universal/LICENSE.txt
             magnificationModeNames: ["Dock", "Full Screen", "Lens"],
             magnificationModeValues: [1, 2, 3],
             cursors: {
-                values: ["Normal", "Large", "Extra Large"],
+                valuelist: ["Normal", "Large", "Extra Large"],
                 selection: "Normal",
-                cursorValues: {
+                values: {
                     Normal: {
                         "No": {
                             "value": "%SystemRoot%\\cursors\\aero_unavail.cur",
@@ -572,8 +572,8 @@ https://github.com/gpii/universal/LICENSE.txt
                 messagekey: "magnifierGroupLabel"
             },
             "orca.voice.default.family": {
-                optionnames: "${voicesDefaultFamily.values}",
-                optionlist: "${voicesDefaultFamily.values}",
+                optionnames: "${voicesDefaultFamily.valuelist}",
+                optionlist: "${voicesDefaultFamily.valuelist}",
                 selection: "${voicesDefaultFamily.selection}"
             },
             "orca.voice.default.familyLabel": {messagekey: "orca.voice.default.familyLabel"},
@@ -771,8 +771,8 @@ https://github.com/gpii/universal/LICENSE.txt
             "desktop.highContrastOn": "${prefs.http://registry\\.gpii\\.org/applications/com\\.microsoft\\.windows\\.highContrast.0.value.highContrastOn.value}",
             "desktop.highContrastOnLabel": {messagekey: "desktop.highContrastOnLabel"},
             "desktop.cursors": {
-                optionnames: "${cursors.values}",
-                optionlist: "${cursors.values}",
+                optionnames: "${cursors.valuelist}",
+                optionlist: "${cursors.valuelist}",
                 selection: "${cursors.selection}"
             },
             "desktop.cursorsLabel": {messagekey: "desktop.cursorsLabel"},
@@ -879,20 +879,53 @@ https://github.com/gpii/universal/LICENSE.txt
         resolverSetConfig: gpii.NPGatheringTool.resolverSetConfig
     });
 
-    gpii.NPGatheringTool.finalInit = function (that) {
-        var cursorsPath =
-            "prefs.http://registry\\.gpii\\.org/applications/com\\.microsoft\\.windows\\.cursors.0.value";
-        var voicesDefaultFamilyPath =
-            "prefs.http://registry\\.gpii\\.org/applications/org\\.gnome\\.orca\\.voice\\.default.0.value.family";
-
-        that.applier.modelChanged.addListener("cursors.selection", function (model) {
-            that.applier.requestChange(cursorsPath,
-                that.model.cursors.cursorValues[model.cursors.selection]);
+    gpii.NPGatheringTool.deepEq = function (obj1, obj2) {
+        var equal = true;
+        $.each(obj1, function (key, val) {
+            if (fluid.isPrimitive(val)) {
+                equal = val === obj2[key];
+            } else {
+                equal = gpii.NPGatheringTool.deepEq(val, obj2[key]);
+            }
+            return equal;
         });
-        that.applier.modelChanged.addListener("voicesDefaultFamily.selection", function (model) {
-            that.applier.requestChange(
-                voicesDefaultFamilyPath,
-                that.model.voicesDefaultFamily.voicesDefaultFamilyValues[model.voicesDefaultFamily.selection]);
+        return equal;
+    };
+
+    gpii.NPGatheringTool.finalInit = function (that) {
+        var bindings = {
+            cursors:
+                "prefs.http://registry\\.gpii\\.org/applications/com\\.microsoft\\.windows\\.cursors.0.value",
+            voicesDefaultFamily:
+                "prefs.http://registry\\.gpii\\.org/applications/org\\.gnome\\.orca\\.voice\\.default.0.value.family"
+        };
+
+        fluid.each(bindings, function (elPath, path) {
+            var selPath = fluid.model.composeSegments(path, "selection");
+            var values = that.model[path].values;
+            that.applier.modelChanged.addListener(selPath, function (model, oldModel, changeRequest) {
+                if (changeRequest[0].oneWay) {return;}
+                that.applier.fireChangeRequest({
+                    path: elPath,
+                    value: values[model[path].selection],
+                    oneWay: true
+                });
+            });
+            that.applier.modelChanged.addListener(elPath, function (model, oldModel, changeRequest) {
+                if (changeRequest[0].oneWay) {return;}
+                var newValue = fluid.get(that.model, elPath, that.options.resolverGetConfig);
+                var selection = fluid.find(values, function (value, key) {
+                    if (gpii.NPGatheringTool.deepEq(newValue, value)) {
+                        return key;
+                    }
+                });
+                if (selection === model[path].selection) {return;}
+                that.applier.fireChangeRequest({
+                    path: selPath,
+                    value: selection,
+                    oneWay: true
+                });
+            });
         });
     };
 
