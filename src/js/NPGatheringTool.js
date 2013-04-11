@@ -389,6 +389,8 @@ https://github.com/gpii/universal/LICENSE.txt
             verbalizePunctuationStyleNames: ["All", "Most", "Some", "None"],
             sayAllStyleNames: ["Line", "Sentence"],
             sayAllStyleList: [0, 1],
+            cursorSizeNames: ["Small", "Normal", "Large", "Extra-Large"],
+            cursorSizeList: [-1, 20, 29, 41],
             defaults: {
                 notes: "",
                 // LINUX
@@ -413,7 +415,7 @@ https://github.com/gpii/universal/LICENSE.txt
                         "gtk-theme": "Adwaita",
                         "icon-theme": "gnome",
                         "text-scaling-factor": 1.0,
-                        "cursor-size": 24
+                        "cursor-size": 20
                     }
                 }],
                 "http://registry.gpii.org/applications/org.gnome.desktop.a11y.magnifier": [{
@@ -659,13 +661,11 @@ https://github.com/gpii/universal/LICENSE.txt
             "desktop.cursor-size": {
                 decorators: {
                     type: "fluid",
-                    func: "gpii.textfieldSlider",
+                    func: "gpii.numericDropDown",
                     options: {
-                        elPath: "prefs.http://registry\\.gpii\\.org/applications/org\\.gnome\\.desktop\\.interface.0.value.cursor-size",
-                        model: {
-                            min: 1,
-                            max: 100
-                        }
+                        optionnames: "${cursorSizeNames}",
+                        optionlist: "${cursorSizeList}",
+                        selection: "prefs.http://registry\\.gpii\\.org/applications/org\\.gnome\\.desktop\\.interface.0.value.cursor-size"
                     }
                 }
             },
