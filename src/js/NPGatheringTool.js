@@ -51,7 +51,7 @@ https://github.com/gpii/universal/LICENSE.txt
             a11yGroupLabel: "Accessibility",
             nvdaGroupLabel: "NVDA",
             magnifierGroupLabel: "Magnification",
-            "orca.voice.default.familyLabel": "Voice Default Family",
+            "orca.voice.default.familyLabel": "Person (TTS language)",
             "orca.voice.default.rateLabel": "Voice Default Rate",
             "orca.enableTutorialMessagesLabel": "Enable Tutorial Messages",
             "orca.enableEchoByCharacterLabel": "Enable Echo by Character",
@@ -77,7 +77,7 @@ https://github.com/gpii/universal/LICENSE.txt
             "nvda.keyboard.speakTypedCharactersLabel": "Speak Typed Characters",
             "nvda.keyboard.speakTypedWordsLabel": "Speak Typed Words",
             "nvda.speech.espeak.sayCapForCapitalsLabel": "Say 'Cap' For Capitals",
-            "nvda.speech.symbolLevelLabel": "Symbol Level",
+            "nvda.speech.symbolLevelLabel": "Punctuation/symbol level",
             "nvda.virtualBuffers.autoSayAllOnPageLoadLabel": "Say All On Page Load",
             "nvda.speech.synthLabel": "Speech Synth",
             "nvda.speech.outputDeviceLabel": "Output Device",
@@ -429,7 +429,7 @@ https://github.com/gpii/universal/LICENSE.txt
                 "http://registry.gpii.org/applications/org.nvda-project": [{
                     value: {
                         "speech.espeak.voice": "en\\en",
-                        "speech.espeak.rate": 45,
+                        "speech.espeak.rate": 30,
                         "speech.espeak.rateBoost": false,
                         "reviewCursor.followFocus": true,
                         "reviewCursor.followCaret": true,
