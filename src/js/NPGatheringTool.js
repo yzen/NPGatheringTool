@@ -511,7 +511,7 @@ https://github.com/gpii/universal/LICENSE.txt
                 "http://registry.gpii.org/applications/com.microsoft.windows.magnifier": [{
                     value: {
                         Magnification: {
-                            value: 200,
+                            value: 100,
                             dataType: "REG_DWORD"
                         },
                         FollowFocus: {
