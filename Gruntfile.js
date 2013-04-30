@@ -67,6 +67,19 @@ module.exports = function(grunt) {
                     }
                 }
             }
+        },
+        uglify: {
+            options: {
+                mangle: {
+                    except: ["jQuery", "fluid", "fluid_1_5", "gpii"]
+                },
+                compress: true
+            },
+            my_target: {
+                files: {
+                    "build/NPGatheringTool.js": ["build/NPGatheringTool.js"]
+                }
+            }
         }
     });
   
@@ -74,8 +87,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks("grunt-contrib-jshint");
     grunt.loadNpmTasks("grunt-contrib-clean");
     grunt.loadNpmTasks("grunt-contrib-concat");
+    grunt.loadNpmTasks("grunt-contrib-uglify");
   
     // Custom task(s):
-    grunt.registerTask("default", ["jshint:all"]);
-    grunt.registerTask("build", ["clean", "jshint:all", "concat:js", "concat:css", "concat:html"]);
+    grunt.registerTask("default", ["clean", "jshint:all"]);
+    grunt.registerTask("build", ["clean", "jshint:all", "concat:js", "concat:css", "concat:html", "uglify"]);
 };
