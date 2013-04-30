@@ -1,32 +1,37 @@
 {
-    "name": "NPGatheringTool",
-    "description": "A tool used to generate profiles for the first evaluation phase.",
-    "version": "0.1.0",
-    "author": "GPII",
-    "bugs": "http://wiki.gpii.net/index.php/Main_Page",
-    "homepage": "http://gpii.net/",
-    "dependencies": {
-        "universal": "git://github.com/yzen/universal.git#7200944035ae38af264c5ebeed04b5047689a488"
-    },
-    "licenses": [
-        {
-            "type": "BSD-3-Clause",
-            "url": "http://www.opensource.org/licenses/BSD-3-Clause"
-        }
-    ],
-    "keywords": [
-        "gpii",
-        "accessibility",
-        "settings",
-        "fluid",
-        "IoC",
-        "Inversion of Control",
-        "configuration",
-        "evented"
-    ],
-    "repository": "git://github.com/yzen/NPGatheringTool.git",
-    "main": "./lib/NPGatheringTool.js",
-    "engines": {
-        "node": ">=0.1.9"
+  "name": "NPGatheringTool",
+  "description": "A tool used to generate profiles for the first evaluation phase.",
+  "version": "0.1.0",
+  "author": "GPII",
+  "bugs": "http://wiki.gpii.net/index.php/Main_Page",
+  "homepage": "http://gpii.net/",
+  "dependencies": {
+    "universal": "git://github.com/yzen/universal.git#7200944035ae38af264c5ebeed04b5047689a488"
+  },
+  "licenses": [
+    {
+      "type": "BSD-3-Clause",
+      "url": "http://www.opensource.org/licenses/BSD-3-Clause"
     }
+  ],
+  "keywords": [
+    "gpii",
+    "accessibility",
+    "settings",
+    "fluid",
+    "IoC",
+    "Inversion of Control",
+    "configuration",
+    "evented"
+  ],
+  "repository": "git://github.com/yzen/NPGatheringTool.git",
+  "main": "./lib/NPGatheringTool.js",
+  "engines": {
+    "node": ">=0.1.9"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-jshint": "~0.4.3",
+    "grunt-contrib-concat": "~0.3.0"
+  }
 }
